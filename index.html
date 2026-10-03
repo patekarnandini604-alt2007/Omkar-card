@@ -3,10 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Favourite Person ❤️</title>
+<title>For Omkar ❤️</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oooh+Baby&display=swap" rel="stylesheet">
 
 <style>
@@ -17,20 +15,20 @@
 }
 
 body{
-  min-height:100vh;
   font-family:'DM Sans',sans-serif;
-  background:radial-gradient(circle at top,#ffdbe8,#fff3f7 45%,#fff);
-  color:#4a2634;
+  background:#090909;
+  color:#fff;
+  min-height:100vh;
   overflow-x:hidden;
 }
 
 .screen{
   display:none;
   min-height:100vh;
-  width:100%;
-  padding:25px 18px;
-  justify-content:center;
+  padding:30px 20px;
   align-items:center;
+  justify-content:center;
+  text-align:center;
 }
 
 .screen.active{
@@ -39,1549 +37,662 @@ body{
 
 .card{
   width:100%;
-  max-width:520px;
-  background:rgba(255,255,255,.93);
-  border-radius:28px;
-  padding:28px 20px;
-  box-shadow:0 20px 60px rgba(128,45,77,.15);
-  text-align:center;
+  max-width:500px;
+  padding:35px 25px;
 }
 
 h1,h2,.script{
   font-family:'Oooh Baby',cursive;
-  color:#d94c78;
 }
 
 h1{
-  font-size:48px;
-  line-height:1.1;
-  margin-bottom:10px;
-}
-
-h2{
-  font-size:40px;
-  margin-bottom:14px;
-}
-
-p{
-  line-height:1.65;
-}
-
-.small{
-  font-size:13px;
-  color:#97717f;
+  font-size:58px;
+  line-height:1;
   margin-bottom:20px;
 }
 
-input,textarea{
-  width:100%;
-  border:1px solid #f0cbd8;
-  background:#fffafd;
-  border-radius:16px;
-  padding:14px;
-  margin:7px 0;
-  font-family:inherit;
-  font-size:15px;
-  outline:none;
+h2{
+  font-size:43px;
+  margin-bottom:20px;
 }
 
-textarea{
-  min-height:130px;
-  resize:vertical;
+p{
+  font-size:16px;
+  line-height:1.7;
+  color:#eee;
+}
+
+.small{
+  font-size:14px;
+  color:#aaa;
 }
 
 button{
   border:0;
-  border-radius:999px;
-  padding:13px 22px;
-  margin-top:12px;
-  background:linear-gradient(135deg,#e85d8c,#d83e70);
-  color:white;
-  font-family:inherit;
+  border-radius:30px;
+  padding:15px 28px;
+  margin-top:25px;
   font-size:15px;
   font-weight:700;
   cursor:pointer;
-  box-shadow:0 8px 20px rgba(216,62,112,.22);
+  background:#fff;
+  color:#111;
+  transition:.25s;
+}
+
+button:hover{
+  transform:scale(1.04);
 }
 
 button:active{
-  transform:scale(.96);
+  transform:scale(.97);
 }
 
-.secondary{
-  background:#fff;
-  color:#d74775;
-  border:1px solid #efbfd0;
-  box-shadow:none;
+/* INTRO */
+.intro-heart{
+  font-size:65px;
+  animation:pulse 1.5s infinite;
 }
 
-.preview-box{
-  background:#fff4f8;
-  border-radius:20px;
-  padding:20px;
-  margin:18px 0;
-  text-align:left;
+@keyframes pulse{
+  50%{transform:scale(1.12);}
 }
 
-.preview-name{
-  font-family:'Oooh Baby',cursive;
-  color:#d94c78;
-  font-size:36px;
-  margin-bottom:8px;
+/* CAR */
+.road{
+  position:relative;
+  height:130px;
+  margin:35px -20px 10px;
+  overflow:hidden;
+  background:linear-gradient(#171717 0 55%,#292929 55%);
 }
 
-.message-preview{
-  white-space:pre-line;
+.road:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:82px;
+  height:5px;
+  background:repeating-linear-gradient(
+    90deg,
+    #fff 0 35px,
+    transparent 35px 65px
+  );
 }
 
-.link-box{
-  background:#fff7fa;
-  border:1px dashed #e59ab4;
-  border-radius:15px;
-  padding:12px;
-  word-break:break-all;
-  font-size:12px;
-  margin:15px 0;
-  color:#875164;
+.car{
+  position:absolute;
+  font-size:65px;
+  bottom:35px;
+  left:10%;
+  animation:drive 4s linear infinite;
+  z-index:2;
+}
+
+@keyframes drive{
+  from{left:-20%}
+  to{left:105%}
 }
 
 /* QUIZ */
-
 .progress{
-  width:100%;
-  height:8px;
-  background:#f6dce6;
-  border-radius:20px;
-  overflow:hidden;
-  margin:15px 0 22px;
-}
-
-.progress-bar{
-  height:100%;
-  width:20%;
-  background:linear-gradient(90deg,#e85d8c,#f29ab6);
-  transition:.3s;
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:15px;
 }
 
 .question{
   font-family:'Oooh Baby',cursive;
-  font-size:31px;
-  color:#c83e6c;
-  line-height:1.25;
-  margin-bottom:18px;
+  font-size:34px;
+  line-height:1.2;
+  margin:20px 0 25px;
+}
+
+.options{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
 .option{
-  display:block;
   width:100%;
+  background:#181818;
+  border:1px solid #333;
+  color:#fff;
+  margin:0;
   text-align:left;
-  background:#fff;
-  color:#603846;
-  border:1px solid #f1cdd9;
-  box-shadow:none;
-  margin:9px 0;
-  border-radius:17px;
-  font-weight:500;
 }
 
-.reaction{
-  min-height:35px;
-  margin-top:10px;
-  color:#d44c77;
-  font-weight:700;
+.option:hover{
+  background:#252525;
 }
 
 /* LETTER */
-
 .letter{
+  background:#151515;
+  border:1px solid #333;
+  border-radius:22px;
+  padding:28px 22px;
   text-align:left;
-  background:#fffafc;
-  border-radius:20px;
-  padding:22px;
-  border:1px solid #f4d7e1;
-  white-space:pre-line;
-  line-height:1.8;
+  margin-top:20px;
 }
 
-.signature{
-  margin-top:20px;
-  text-align:right;
-  font-family:'Oooh Baby',cursive;
-  font-size:28px;
-  color:#d94c78;
+.letter p{
+  white-space:pre-line;
 }
 
 /* CERTIFICATE */
-
 .certificate{
-  position:relative;
-  padding:32px 20px;
-  border:5px double #d4a33d;
-  border-radius:22px;
-  background:
-    radial-gradient(circle at 20% 20%,rgba(255,220,125,.22),transparent 20%),
-    radial-gradient(circle at 80% 80%,rgba(255,210,100,.18),transparent 22%),
-    #fffdf7;
-  box-shadow:0 15px 45px rgba(140,100,30,.12);
-  overflow:hidden;
+  background:#151515;
+  border:5px double #d5b45a;
+  padding:35px 20px;
+  border-radius:8px;
+  box-shadow:0 0 30px rgba(255,215,100,.12);
 }
 
-.certificate:before,
-.certificate:after{
-  content:"✦";
-  position:absolute;
-  color:#d4a33d;
-  font-size:28px;
+.certificate .crown{
+  font-size:50px;
 }
 
-.certificate:before{
-  top:12px;
-  left:16px;
+.certificate h2{
+  color:#e6c96a;
+  font-size:48px;
 }
 
-.certificate:after{
-  bottom:12px;
-  right:16px;
-}
-
-.cert-small{
-  color:#a17b28;
-  letter-spacing:3px;
-  font-size:11px;
-  font-weight:700;
-}
-
-.cert-title{
+.certificate-name{
   font-family:'Oooh Baby',cursive;
-  font-size:42px;
-  color:#b68122;
-  margin:12px 0;
+  font-size:48px;
+  margin:15px 0;
+  color:#fff;
 }
 
-.crown{
-  width:62px;
-  height:62px;
-  margin:10px auto;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(145deg,#ffe69b,#fff6cf);
-  border:2px solid #d4a33d;
-  font-size:30px;
+.gold{
+  color:#e6c96a;
 }
 
-.cert-name{
-  font-family:'Oooh Baby',cursive;
-  font-size:43px;
-  color:#d94c78;
-  margin:12px 0;
+/* LOVE DRIVE */
+.stop{
+  background:#151515;
+  border:1px solid #333;
+  border-radius:20px;
+  padding:25px 18px;
+  margin:18px 0;
 }
 
-.cert-text{
-  color:#765d2c;
-  line-height:1.7;
-}
-
-.cert-footer{
-  margin-top:20px;
-  color:#9b7628;
-  font-size:13px;
-}
-
-/* CAT GAME */
-
-.cat-game{
-  position:relative;
-  overflow:hidden;
-  min-height:520px;
-  background:linear-gradient(180deg,#fff5f8,#ffe7ef);
-  border-radius:25px;
-  padding:25px 15px;
-}
-
-.cat-title{
-  font-family:'Oooh Baby',cursive;
-  color:#d74775;
-  font-size:39px;
-}
-
-.cat-sub{
-  font-size:14px;
-  color:#8e6372;
-  margin:4px 0 15px;
-}
-
-.cat-stage{
-  position:relative;
-  height:270px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.cat{
-  width:190px;
-  height:190px;
-  border-radius:50%;
-  background:#ffd8e5;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:105px;
-  box-shadow:0 18px 35px rgba(184,73,112,.16);
-  animation:catFloat 2s ease-in-out infinite;
-  cursor:pointer;
-  user-select:none;
-}
-
-.cat.shake{
-  animation:shake .45s ease;
-}
-
-.cat.jump{
-  animation:jump .65s ease;
-}
-
-.cat.cry{
-  animation:cry .8s ease;
-}
-
-.cat.angry{
-  animation:angry .6s ease;
-}
-
-.cat.kiss{
-  animation:kiss .7s ease;
-}
-
-.cat.love{
-  animation:love .8s ease;
-}
-
-@keyframes catFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-9px)}
-}
-
-@keyframes shake{
-  0%,100%{transform:rotate(0)}
-  25%{transform:rotate(-12deg)}
-  75%{transform:rotate(12deg)}
-}
-
-@keyframes jump{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-45px) scale(1.05)}
-  100%{transform:translateY(0)}
-}
-
-@keyframes cry{
-  0%{transform:translateY(0)}
-  35%{transform:translateY(8px)}
-  70%{transform:translateY(-5px)}
-  100%{transform:translateY(0)}
-}
-
-@keyframes angry{
-  0%,100%{transform:rotate(0)}
-  30%{transform:rotate(-7deg)}
-  60%{transform:rotate(7deg)}
-}
-
-@keyframes kiss{
-  0%{transform:scale(1)}
-  45%{transform:scale(1.15)}
-  100%{transform:scale(1)}
-}
-
-@keyframes love{
-  0%{transform:scale(1)}
-  40%{transform:scale(1.2)}
-  70%{transform:scale(.95)}
-  100%{transform:scale(1)}
-}
-
-.cat-message{
-  min-height:58px;
-  background:rgba(255,255,255,.75);
-  border-radius:18px;
-  padding:13px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:700;
-  color:#c83e6c;
+.stop-icon{
+  font-size:45px;
   margin-bottom:10px;
 }
 
-.paws{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  overflow:hidden;
+.choice{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:18px;
 }
 
-.paw{
-  position:absolute;
-  font-size:22px;
-  animation:pawFall 2.5s linear forwards;
-}
-
-@keyframes pawFall{
-  0%{
-    transform:translateY(-30px) rotate(0);
-    opacity:0;
-  }
-  20%{opacity:1}
-  100%{
-    transform:translateY(560px) rotate(180deg);
-    opacity:0;
-  }
-}
-
-.cat-counter{
-  font-size:13px;
-  color:#9a6577;
-  margin-top:10px;
+.choice button{
+  margin:0;
+  padding:15px 10px;
+  background:#1e1e1e;
+  color:#fff;
+  border:1px solid #444;
 }
 
 /* FINAL */
-
-.promise{
-  background:linear-gradient(145deg,#fff,#fff1f6);
-  border:1px solid #f5cfdd;
-  border-radius:25px;
-  padding:28px 20px;
-  line-height:1.9;
+.final-heart{
+  font-size:70px;
+  animation:pulse 1.5s infinite;
 }
 
-.promise-text{
-  white-space:pre-line;
-  font-size:16px;
+.signature{
+  margin-top:30px;
+  font-family:'Oooh Baby',cursive;
+  font-size:35px;
 }
 
-.final-footer{
-  margin-top:22px;
-  color:#a86a80;
-  font-size:13px;
+.fade{
+  animation:fade .6s ease;
 }
 
-.hearts{
-  margin-top:15px;
-  font-size:22px;
-  animation:heartPulse 1.4s infinite;
+@keyframes fade{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-@keyframes heartPulse{
-  50%{transform:scale(1.15)}
-}
-
-/* CONFETTI */
-
-.confetti{
-  position:fixed;
-  top:-20px;
-  font-size:22px;
-  animation:confettiFall 3s linear forwards;
-  pointer-events:none;
-  z-index:999;
-}
-
-@keyframes confettiFall{
-  to{
-    transform:translateY(110vh) rotate(500deg);
-    opacity:0;
-  }
-}
-
-@media(max-width:380px){
-  h1{font-size:42px}
-  h2{font-size:34px}
-  .question{font-size:28px}
-  .cat{
-    width:165px;
-    height:165px;
-    font-size:90px;
-  }
+.hidden{
+  display:none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- CREATOR -->
-<section class="screen active" id="screen1">
-  <div class="card">
-    <h1>For Your Favourite Person ❤️</h1>
+<!-- 1 INTRO -->
+<section id="intro" class="screen active">
+  <div class="card fade">
 
-    <p class="small">
-      Create a little surprise for your boyfriend 🥹💕
-    </p>
+    <div class="intro-heart">❤️</div>
 
-    <input id="nickname" placeholder="His nickname ❤️">
-
-    <input id="yourname" placeholder="Your name 💕">
-
-    <textarea id="personalMessage"
-      placeholder="Write your personal message here... 🥹❤️"></textarea>
-
-    <button onclick="createCard()">
-      Create Surprise ✨
-    </button>
-  </div>
-</section>
-
-
-<!-- PREVIEW -->
-<section class="screen" id="screen2">
-  <div class="card">
-
-    <h2>Preview 💌</h2>
-
-    <div class="preview-box">
-
-      <div class="preview-name" id="previewName"></div>
-
-      <div class="message-preview"
-           id="previewMessage"></div>
-
-    </div>
-
-    <button onclick="generateLink()">
-      Looks Perfect ❤️
-    </button>
-
-    <br>
-
-    <button class="secondary"
-            onclick="goTo('screen1')">
-      Edit
-    </button>
-
-  </div>
-</section>
-
-
-<!-- LINK -->
-<section class="screen" id="screen3">
-  <div class="card">
-
-    <h2>Your Surprise Is Ready! 🎉</h2>
+    <h1>Hey You...</h1>
 
     <p>
-      हा link त्याला send कर ❤️<br>
-      Link open केल्यावर direct quiz दिसेल.
+      Aaj tujhya sathi ek chhota surprise aahe. 🥹<br>
+      Khup motha kahi nahi...<br>
+      pan shevattparyant nakki bagh. ❤️
     </p>
 
-    <div class="link-box"
-         id="generatedLink"></div>
-
-    <button onclick="copyLink()">
-      Copy Link 💌
+    <button onclick="show('driveIntro')">
+      LET'S GO ❤️
     </button>
 
   </div>
 </section>
 
 
-<!-- QUIZ -->
-<section class="screen" id="screen4">
-  <div class="card">
+<!-- 2 CAR INTRO -->
+<section id="driveIntro" class="screen">
+  <div class="card fade">
 
-    <p class="small"
-       id="questionNumber">
-      Question 1 of 5
-    </p>
-
-    <div class="progress">
-      <div class="progress-bar"
-           id="progressBar"></div>
-    </div>
-
-    <div class="question"
-         id="questionText"></div>
-
-    <div id="options"></div>
-
-    <div class="reaction"
-         id="reaction"></div>
-
-  </div>
-</section>
-
-
-<!-- COMPLETE -->
-<section class="screen" id="screen5">
-  <div class="card">
-
-    <div style="font-size:65px;">
-      🎉
-    </div>
-
-    <h2>You Passed! ❤️</h2>
-
-    <p style="font-size:18px;font-weight:700;">
-      5 / 5
-    </p>
+    <h2>Destination: Us ❤️</h2>
 
     <p>
-      Boyfriend Level Successfully Unlocked 🔓💕
+      Aaj kuthlyahi map chi garaj nahi...<br>
+      karan mala fakt tujhya sobat ha journey continue karaycha aahe. 🫂
     </p>
 
-    <button onclick="openLetter()">
-      Open Your Letter 💌
+    <div class="road">
+      <div class="car">🚗💨</div>
+    </div>
+
+    <button onclick="startQuiz()">
+      START ENGINE 🔑
     </button>
 
   </div>
 </section>
 
 
-<!-- LETTER -->
-<section class="screen" id="screen6">
-  <div class="card">
+<!-- 3 QUIZ -->
+<section id="quiz" class="screen">
+  <div class="card fade">
 
-    <h2>For You, My Love 💌</h2>
+    <div class="progress" id="progress"></div>
 
-    <div class="letter"
-         id="letterText"></div>
+    <div class="question" id="question"></div>
 
-    <div class="signature"
-         id="letterSignature"></div>
+    <div class="options" id="options"></div>
 
-    <button onclick="showCertificate()">
-      Continue ❤️
+  </div>
+</section>
+
+
+<!-- 4 QUIZ COMPLETE -->
+<section id="quizDone" class="screen">
+  <div class="card fade">
+
+    <div style="font-size:65px;">🏁</div>
+
+    <h1>You Made It!</h1>
+
+    <p>
+      5/5 ❤️<br><br>
+      Boyfriend level officially unlocked! 😌
+    </p>
+
+    <button onclick="show('letter')">
+      NEXT SURPRISE 💌
     </button>
 
   </div>
 </section>
 
 
-<!-- CERTIFICATE -->
-<section class="screen" id="screen7">
-  <div class="card">
+<!-- 5 LETTER -->
+<section id="letter" class="screen">
+  <div class="card fade">
+
+    <h2>A Little Something From Me... ❤️</h2>
+
+    <div class="letter">
+      <p>
+Omkar,
+
+Honestly, kadhi kadhi mala vatata ki aapan evdhya chhan memories kasa create kelya. 🥹❤️
+
+Tu majhya life madhla fakt boyfriend nahi,
+tu majha best friend pan ahes.
+
+Aplya relationship madhye thode fights, thode rusve,
+khup saare laughs ani khup saari memories aahet.
+
+Pan ya saglya madhye ek goshta constant aahe...
+
+I still choose you. ❤️
+
+Thank you for being there,
+majha mood tolerate karnyasathi 😂,
+mala hasvnyasathi,
+ani simply majhya life madhye asnyasathi.
+
+Happy Boyfriend Day, Omkar. ❤️
+
+I love you. ♾️
+      </p>
+    </div>
+
+    <button onclick="show('certificate')">
+      ONE MORE THING 🥹
+    </button>
+
+  </div>
+</section>
+
+
+<!-- 6 CERTIFICATE -->
+<section id="certificate" class="screen">
+  <div class="card fade">
 
     <div class="certificate">
 
-      <div class="cert-small">
-        OFFICIALLY AWARDED
+      <div class="crown">👑</div>
+
+      <p class="gold">THIS CERTIFICATE IS PROUDLY PRESENTED TO</p>
+
+      <div class="certificate-name">
+        Omkar ❤️
       </div>
 
-      <div class="cert-title">
-        Best Boyfriend
-      </div>
+      <h2>Best Boyfriend</h2>
 
-      <div class="crown">
-        👑
-      </div>
+      <p>
+        Ha certificate tya vyaktila denyat yet aahe,
+        jo majha boring day pan special banvto,
+        mala hasvto, majhyavar chidto
+        ani tarihi shevti majhyasobat asto. ❤️
+      </p>
 
-      <div class="cert-name"
-           id="certName"></div>
+      <br>
 
-      <div class="cert-text">
-
-        This certificate is proudly presented
-        to the one who makes ordinary days
-        feel special, makes me laugh when I
-        don't want to, and somehow became
-        my favourite person. ❤️
-
-      </div>
-
-      <div class="cert-footer">
+      <p class="gold">
         Certified with unlimited love ♾️
-      </div>
+      </p>
 
     </div>
 
-    <button onclick="startCatGame()">
-      Claim Your Prize 🐱❤️
+    <button onclick="show('loveDrive')">
+      ONE LAST DRIVE 🚗
     </button>
 
   </div>
 </section>
 
 
-<!-- CAT GAME -->
-<section class="screen" id="screen8">
+<!-- 7 LOVE DRIVE -->
+<section id="loveDrive" class="screen">
+  <div class="card fade">
 
-  <div class="card cat-game">
+    <h2>One Last Drive? 🚗❤️</h2>
 
-    <div class="paws"
-         id="paws"></div>
+    <p>
+      Chala, ajun ek chhota ride gheuya...<br>
+      Destination mahit nahi,<br>
+      pan passenger seat var tu aslas ki enough aahe. 🥹
+    </p>
 
-    <div class="cat-title">
-      Cat Meme Mission 🐱
+    <div class="road">
+      <div class="car">🚗💨</div>
     </div>
 
-    <div class="cat-sub">
-      Okay Mr. Boyfriend… now catch the cats 😼
+    <div class="stop">
+
+      <div class="stop-icon">🛣️</div>
+
+      <h2>Memory Lane</h2>
+
+      <p>
+        Aplya relationship madhli ek memory
+        ji mi kadhi visarnar nahi... ❤️
+      </p>
+
     </div>
 
-    <div class="cat-stage">
 
-      <div class="cat"
-           id="cat"
-           onclick="tapCat()">
-        😼
+    <div class="stop">
+
+      <div class="stop-icon">⛽</div>
+
+      <h2>Love Fuel</h2>
+
+      <p>
+        Aplya next drive sathi kay gheu?
+      </p>
+
+      <div class="choice">
+
+        <button onclick="fuel('🍫 Snacks')">
+          🍫 Snacks
+        </button>
+
+        <button onclick="fuel('🎶 Music')">
+          🎶 Music
+        </button>
+
+        <button onclick="fuel('📸 Photos')">
+          📸 Photos
+        </button>
+
+        <button onclick="fuel('❤️ Just Us')">
+          ❤️ Just Us
+        </button>
+
       </div>
 
+      <p id="fuelResult" class="small" style="margin-top:18px;"></p>
+
     </div>
 
-    <div class="cat-message"
-         id="catMessage">
-      Tap the cat… if you dare 😼
+
+    <div class="stop">
+
+      <div class="stop-icon">🚦</div>
+
+      <h2>Red Light</h2>
+
+      <p>
+        Thamb zara... 👀<br><br>
+        Ek important goshta sangaychi aahe...
+        tu majhya sathi khup special ahes. ❤️
+      </p>
+
     </div>
 
-    <div class="cat-counter"
-         id="catCounter">
-      Cat 1 / 6
-    </div>
-
-    <button id="catButton"
-            onclick="tapCat()">
-      Tap The Cat 🐾
+    <button onclick="show('final')">
+      REACH FINAL DESTINATION 🏁
     </button>
 
   </div>
-
 </section>
 
 
-<!-- FINAL -->
-<section class="screen" id="screen9">
+<!-- 8 FINAL -->
+<section id="final" class="screen">
+  <div class="card fade">
 
-  <div class="card">
+    <div class="final-heart">❤️</div>
 
-    <div class="promise">
+    <h1>One Little Promise</h1>
 
-      <h2>One Little Promise ❤️</h2>
+    <p>
+      Mala aple sagle days perfect pahijet
+      asa nahi...
+      <br><br>
 
-      <div class="promise-text">
-तुझ्यासोबत प्रत्येक दिवस perfect असावा,
-अशी माझी अपेक्षा नाही…
+      Pan day kiti hi tough asla,
+      tarihi shevti apan ekmekanchya bajula asav. 🫂
+      <br><br>
 
-पण दिवस कितीही tough असला,
-तरी शेवटी आपण एकमेकांच्या बाजूला असावं. 🫂
+      Thoda bhandu, thoda rusu,
+      khup hasu ani bharpur memories banvu. 😂❤️
+      <br><br>
 
-थोडं भांडू, थोडं रुसू,
-खूप हसू आणि भरपूर memories बनवू… 😂❤️
+      Ani years kiti hi jhale tari,
+      mi tula punha punha choose karen. ♾️❤️
+    </p>
 
-आणि कितीही वर्षं झाली तरी
-एकमेकांकडे बघून मनात एकच thought यावा—
+    <br>
 
-“Yeah… I'd still choose you.” ♾️❤️
-      </div>
+    <p>
+      Our story is still being written... 💌
+    </p>
 
-      <div class="final-footer">
-        Our story is still being written… 💌
-      </div>
-
-      <div class="signature"
-           id="finalSignature"></div>
-
-      <div class="hearts">
-        ❤️ 💕 ❤️
-      </div>
-
+    <div class="signature">
+      — Nandini ♡ Omkar
     </div>
 
-  </div>
+    <p style="margin-top:25px;">
+      Happy Boyfriend Day, Omkar. ❤️
+    </p>
 
+  </div>
 </section>
 
 
 <script>
 
-/* ================================
-   BASIC DATA
-================================ */
-
-let cardData = {
-  nickname:"",
-  yourname:"",
-  message:""
-};
-
-let currentQuestion = 0;
-let score = 0;
-let catIndex = 0;
-
-
-/* ================================
-   QUIZ QUESTIONS
-================================ */
-
 const questions = [
 
-  {
-    q:"माझा mood खराब असेल तर मला काय हवं असतं? 🥺",
+{
+ q:"Majha mood off asel tar mala secretly kay hav asta? 🥺",
+ options:[
+ "🍫 Something sweet",
+ "🫂 A hug",
+ "😴 Thodi sleep",
+ "😂 Tujha annoying bolna"
+ ]
+},
 
-    options:[
-      "🍫 Something sweet",
-      "🫂 A hug",
-      "😴 Sleep",
-      "😂 तुझं annoying बोलणं"
-    ],
+{
+ q:"Aplya doghanmadhe jast annoying kon? 😂",
+ options:[
+ "😇 Me",
+ "😈 You",
+ "🤝 Both equally",
+ "🥹 Nobody"
+ ]
+},
 
-    reactions:[
-      "Chocolate = instant happiness 😂🍫",
-      "Hug detected 🫂❤️",
-      "Okay sleepy baby 😴💕",
-      "Of course माझं annoying बोलणं 😂❤️"
-    ]
-  },
+{
+ q:"Mala tujhya madhla saglyat jast kay avadta? ❤️",
+ options:[
+ "🥹 Your care",
+ "😂 Your stupid jokes",
+ "🫂 The way you make me feel safe",
+ "💕 Everything about you"
+ ]
+},
 
-  {
-    q:"आपल्या दोघांमध्ये जास्त annoying कोण? 😂",
+{
+ q:"Jar apan ek full day free asu tar mi kay choose karen? 👀",
+ options:[
+ "🎬 Movie + food",
+ "🚗 Long drive",
+ "🌆 Baher firayla",
+ "🛌 Full day together"
+ ]
+},
 
-    options:[
-      "😇 Me",
-      "😈 You",
-      "🤝 Both equally",
-      "🥹 Nobody"
-    ],
-
-    reactions:[
-      "Hmm… suspicious answer 😇😂",
-      "At least you admitted it 😈😂",
-      "Finally! Honesty 😂🤝",
-      "Awww किती innocent answer 🥹"
-    ]
-  },
-
-  {
-    q:"मला तुझ्यातलं सगळ्यात जास्त काय आवडतं? ❤️",
-
-    options:[
-      "🥹 Your care",
-      "😂 Your stupid jokes",
-      "🫂 The way you make me feel safe",
-      "💕 Everything about you"
-    ],
-
-    reactions:[
-      "Your care really matters 🥹❤️",
-      "Those stupid jokes are unfortunately cute 😂",
-      "Safe with you 🫂❤️",
-      "Obviously EVERYTHING 💕"
-    ]
-  },
-
-  {
-    q:"जर आपण एक दिवस पूर्णपणे free असू तर मी काय choose करेन? 👀",
-
-    options:[
-      "🎬 Movie + food",
-      "🚗 Long drive",
-      "🌆 बाहेर फिरायला",
-      "🛌 पूर्ण दिवस together"
-    ],
-
-    reactions:[
-      "Movie + food = perfect date 🍿❤️",
-      "Long drive vibes 🚗💕",
-      "Let's goooo 🌆😂",
-      "Full day together? Definitely 😭❤️"
-    ]
-  },
-
-  {
-    q:"मी तुला किती love करते? 🥹❤️",
-
-    options:[
-      "❤️ A lot",
-      "💕 More than you know",
-      "♾️ Infinitely",
-      "😌 याला limitच नाही!"
-    ],
-
-    reactions:[
-      "A lot is still an understatement 🥹",
-      "More than you know 💕",
-      "Infinity sounds right ♾️❤️",
-      "No limit detected 😭❤️"
-    ]
-  }
+{
+ q:"Mi tula kiti love karte? 🥹❤️",
+ options:[
+ "❤️ A lot",
+ "💕 More than you know",
+ "♾️ Infinitely",
+ "😌 Yala limitach nahi!"
+ ]
+}
 
 ];
 
+let current=0;
 
-/* ================================
-   SCREEN
-================================ */
+function show(id){
 
-function goTo(id){
+  document.querySelectorAll('.screen').forEach(s=>{
+    s.classList.remove('active');
+  });
 
-  document.querySelectorAll(".screen")
-    .forEach(function(screen){
-      screen.classList.remove("active");
-    });
+  const target=document.getElementById(id);
 
-  document.getElementById(id)
-    .classList.add("active");
+  target.classList.add('active');
 
   window.scrollTo({
     top:0,
-    behavior:"smooth"
+    behavior:'smooth'
   });
 }
 
-
-/* ================================
-   CREATOR
-================================ */
-
-function createCard(){
-
-  const n =
-    document.getElementById("nickname")
-      .value.trim();
-
-  const f =
-    document.getElementById("yourname")
-      .value.trim();
-
-  const m =
-    document.getElementById("personalMessage")
-      .value.trim();
-
-  if(!n || !f || !m){
-
-    alert("Please fill everything ❤️");
-
-    return;
-  }
-
-  cardData.nickname = n;
-  cardData.yourname = f;
-  cardData.message = m;
-
-  document.getElementById("previewName")
-    .innerText =
-    "For " + n + " ❤️";
-
-  document.getElementById("previewMessage")
-    .innerText = m;
-
-  goTo("screen2");
-}
-
-
-/* =================================================
-   COMPACT URL ENCODING
-   No external library required.
-================================================= */
-
-function encodeCard(data){
-
-  const json =
-    JSON.stringify(data);
-
-  const bytes =
-    new TextEncoder().encode(json);
-
-  let binary = "";
-
-  bytes.forEach(function(byte){
-    binary += String.fromCharCode(byte);
-  });
-
-  return btoa(binary)
-    .replace(/\+/g,"-")
-    .replace(/\//g,"_")
-    .replace(/=+$/,"");
-}
-
-
-function decodeCard(encoded){
-
-  let base64 =
-    encoded
-      .replace(/-/g,"+")
-      .replace(/_/g,"/");
-
-  while(base64.length % 4){
-    base64 += "=";
-  }
-
-  const binary =
-    atob(base64);
-
-  const bytes =
-    new Uint8Array(binary.length);
-
-  for(let i=0;i<binary.length;i++){
-
-    bytes[i] =
-      binary.charCodeAt(i);
-
-  }
-
-  const json =
-    new TextDecoder().decode(bytes);
-
-  return JSON.parse(json);
-}
-
-
-/* ================================
-   GENERATE LINK
-================================ */
-
-function generateLink(){
-
-  const data = {
-
-    n:cardData.nickname,
-
-    f:cardData.yourname,
-
-    m:cardData.message
-
-  };
-
-  const encoded =
-    encodeCard(data);
-
-  const link =
-    window.location.origin +
-    window.location.pathname +
-    "?card=" +
-    encoded;
-
-  document.getElementById("generatedLink")
-    .innerText = link;
-
-  goTo("screen3");
-}
-
-
-/* ================================
-   COPY LINK
-================================ */
-
-function copyLink(){
-
-  const link =
-    document.getElementById("generatedLink")
-      .innerText;
-
-  if(navigator.clipboard){
-
-    navigator.clipboard.writeText(link)
-      .then(function(){
-
-        alert(
-          "Link copied! ❤️ Now send it to him 😭"
-        );
-
-      })
-      .catch(function(){
-
-        prompt(
-          "Copy this link ❤️",
-          link
-        );
-
-      });
-
-  }else{
-
-    prompt(
-      "Copy this link ❤️",
-      link
-    );
-
-  }
-}
-
-
-/* ================================
-   LOAD SHARED CARD
-================================ */
-
-function loadSharedCard(){
-
-  const params =
-    new URLSearchParams(
-      window.location.search
-    );
-
-  const encoded =
-    params.get("card");
-
-  if(!encoded){
-
-    goTo("screen1");
-
-    return;
-  }
-
-  try{
-
-    const decoded =
-      decodeCard(encoded);
-
-    cardData.nickname =
-      decoded.n || "";
-
-    cardData.yourname =
-      decoded.f || "";
-
-    cardData.message =
-      decoded.m || "";
-
-    document.getElementById("letterText")
-      .innerText =
-      cardData.message;
-
-    document.getElementById("letterSignature")
-      .innerText =
-      "— " +
-      cardData.yourname +
-      " ♡";
-
-    document.getElementById("certName")
-      .innerText =
-      cardData.nickname;
-
-    document.getElementById("finalSignature")
-      .innerText =
-      "— " +
-      cardData.yourname +
-      " ♡ " +
-      cardData.nickname;
-
-    startQuiz();
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "This surprise link is invalid 😭"
-    );
-
-    goTo("screen1");
-  }
-}
-
-
-/* ================================
-   QUIZ
-================================ */
 
 function startQuiz(){
 
-  currentQuestion = 0;
+  current=0;
+  show('quiz');
+  loadQuestion();
 
-  score = 0;
-
-  goTo("screen4");
-
-  showQuestion();
 }
 
 
-function showQuestion(){
+function loadQuestion(){
 
-  const question =
-    questions[currentQuestion];
+  const q=questions[current];
 
-  document.getElementById("questionNumber")
-    .innerText =
-    "Question " +
-    (currentQuestion + 1) +
-    " of 5";
+  document.getElementById('progress').innerText =
+    "STOP " + (current+1) + " / 5 🚦";
 
-  document.getElementById("progressBar")
-    .style.width =
-    ((currentQuestion + 1) * 20) +
-    "%";
+  document.getElementById('question').innerText=q.q;
 
-  document.getElementById("questionText")
-    .innerText =
-    question.q;
+  const box=document.getElementById('options');
 
-  document.getElementById("reaction")
-    .innerText = "";
+  box.innerHTML="";
 
-  const options =
-    document.getElementById("options");
+  q.options.forEach(option=>{
 
-  options.innerHTML = "";
+    const btn=document.createElement('button');
 
-  question.options.forEach(
-    function(option,index){
+    btn.className="option";
 
-      const btn =
-        document.createElement("button");
+    btn.innerText=option;
 
-      btn.className =
-        "option";
+    btn.onclick=()=>{
 
-      btn.innerText =
-        option;
+      current++;
 
-      btn.onclick =
-        function(){
+      if(current < questions.length){
 
-          answerQuestion(index);
+        loadQuestion();
 
-        };
+      }else{
 
-      options.appendChild(btn);
+        show('quizDone');
 
-    }
-  );
-}
-
-
-function answerQuestion(index){
-
-  score++;
-
-  const question =
-    questions[currentQuestion];
-
-  document.getElementById("reaction")
-    .innerText =
-    question.reactions[index];
-
-  document.querySelectorAll(".option")
-    .forEach(function(btn){
-
-      btn.disabled = true;
-
-      btn.style.opacity = ".65";
-
-    });
-
-  setTimeout(function(){
-
-    currentQuestion++;
-
-    if(currentQuestion >= questions.length){
-
-      quizComplete();
-
-    }else{
-
-      showQuestion();
-
-    }
-
-  },850);
-}
-
-
-function quizComplete(){
-
-  goTo("screen5");
-
-  makeConfetti();
-}
-
-
-/* ================================
-   LETTER
-================================ */
-
-function openLetter(){
-
-  document.getElementById("letterText")
-    .innerText =
-    cardData.message;
-
-  document.getElementById("letterSignature")
-    .innerText =
-    "— " +
-    cardData.yourname +
-    " ♡";
-
-  goTo("screen6");
-}
-
-
-/* ================================
-   CERTIFICATE
-================================ */
-
-function showCertificate(){
-
-  document.getElementById("certName")
-    .innerText =
-    cardData.nickname;
-
-  goTo("screen7");
-
-  makeConfetti();
-}
-
-
-/* ================================
-   CAT DATA
-================================ */
-
-const cats = [
-
-  {
-    face:"😼",
-    message:
-      "Hehe… पकडलंस! पण अजून 5 बाकी आहेत 😼",
-    animation:"shake"
-  },
-
-  {
-    face:"😂",
-    message:
-      "HAHAHA! तू खरंच हे करत आहेस? 😂",
-    animation:"jump"
-  },
-
-  {
-    face:"🥺",
-    message:
-      "इतक्या पटकन मला का मारलं 😭",
-    animation:"cry"
-  },
-
-  {
-    face:"😾",
-    message:
-      "EXCUSE ME?! माझ्यावर हात उचललास?! 😾",
-    animation:"angry"
-  },
-
-  {
-    face:"😽",
-    message:
-      "Okay fine… one kiss for you 💋",
-    animation:"kiss"
-  },
-
-  {
-    face:"🥰",
-    message:
-      "Okayyy… you win my heart ❤️",
-    animation:"love"
-  }
-
-];
-
-
-/* ================================
-   CAT GAME START
-================================ */
-
-function startCatGame(){
-
-  catIndex = 0;
-
-  document.getElementById("cat")
-    .innerText =
-    cats[0].face;
-
-  document.getElementById("catMessage")
-    .innerText =
-    "Tap the cat… if you dare 😼";
-
-  document.getElementById("catCounter")
-    .innerText =
-    "Cat 1 / 6";
-
-  const button =
-    document.getElementById("catButton");
-
-  button.innerText =
-    "Tap The Cat 🐾";
-
-  button.onclick =
-    function(){
-
-      tapCat();
+      }
 
     };
 
-  goTo("screen8");
+    box.appendChild(btn);
+
+  });
+
 }
 
 
-/* ================================
-   TAP CAT
-================================ */
+function fuel(choice){
 
-function tapCat(){
+  document.getElementById('fuelResult').innerText =
+    choice + " selected ❤️";
 
-  const cat =
-    document.getElementById("cat");
-
-  const data =
-    cats[catIndex];
-
-  cat.classList.remove(
-    "shake",
-    "jump",
-    "cry",
-    "angry",
-    "kiss",
-    "love"
-  );
-
-  void cat.offsetWidth;
-
-  cat.classList.add(
-    data.animation
-  );
-
-  document.getElementById("catMessage")
-    .innerText =
-    data.message;
-
-  createPaws();
-
-  if(catIndex === cats.length - 1){
-
-    setTimeout(function(){
-
-      document.getElementById("catCounter")
-        .innerText =
-        "🐾 CAT MISSION COMPLETE! 🐾";
-
-      const button =
-        document.getElementById("catButton");
-
-      button.innerText =
-        "One Last Thing ❤️";
-
-      button.onclick =
-        function(){
-
-          goTo("screen9");
-
-          makeConfetti();
-
-        };
-
-    },600);
-
-    return;
-  }
-
-  catIndex++;
-
-  setTimeout(function(){
-
-    cat.innerText =
-      cats[catIndex].face;
-
-    document.getElementById("catCounter")
-      .innerText =
-      "Cat " +
-      (catIndex + 1) +
-      " / 6";
-
-  },500);
 }
-
-
-/* ================================
-   PAWS
-================================ */
-
-function createPaws(){
-
-  const container =
-    document.getElementById("paws");
-
-  for(let i=0;i<5;i++){
-
-    const paw =
-      document.createElement("div");
-
-    paw.className =
-      "paw";
-
-    paw.innerText =
-      "🐾";
-
-    paw.style.left =
-      Math.random()*90 + "%";
-
-    paw.style.animationDelay =
-      Math.random()*.5 + "s";
-
-    container.appendChild(paw);
-
-    setTimeout(function(){
-
-      paw.remove();
-
-    },3000);
-  }
-}
-
-
-/* ================================
-   CONFETTI
-================================ */
-
-function makeConfetti(){
-
-  const emojis = [
-    "❤️",
-    "💕",
-    "✨",
-    "🎉",
-    "💗",
-    "🥹",
-    "🌸"
-  ];
-
-  for(let i=0;i<25;i++){
-
-    const item =
-      document.createElement("div");
-
-    item.className =
-      "confetti";
-
-    item.innerText =
-      emojis[
-        Math.floor(
-          Math.random()*emojis.length
-        )
-      ];
-
-    item.style.left =
-      Math.random()*100 +
-      "vw";
-
-    item.style.animationDuration =
-      (2 + Math.random()*2) +
-      "s";
-
-    item.style.animationDelay =
-      Math.random()*.5 +
-      "s";
-
-    document.body.appendChild(item);
-
-    setTimeout(function(){
-
-      item.remove();
-
-    },4500);
-  }
-}
-
-
-/* ================================
-   START
-================================ */
-
-loadSharedCard();
 
 </script>
 
