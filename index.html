@@ -1,26 +1,745 @@
-function generateLink(){
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-const nickname =
-document.getElementById("nickname").value;
+<title>For My Favourite Person 💗</title>
 
-const yourname =
-document.getElementById("yourname").value;
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-const message =
-document.getElementById("message").value;
+<link href="https://fonts.googleapis.com/css2?family=Oooh+Baby&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-const data = {
-  n: nickname,
-  f: yourname,
-  m: message
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top,#ffe8f1 0%,transparent 35%),
+    linear-gradient(135deg,#fff5f8,#ffe8f0);
+  font-family:'DM Sans',sans-serif;
+  color:#5b3b48;
+  overflow-x:hidden;
+}
+
+.screen{
+  display:none;
+  min-height:100vh;
+  padding:25px 16px;
+  align-items:center;
+  justify-content:center;
+}
+
+.screen.active{
+  display:flex;
+}
+
+.card{
+  width:100%;
+  max-width:500px;
+  background:rgba(255,255,255,.94);
+  border-radius:28px;
+  padding:30px 22px;
+  box-shadow:0 20px 60px rgba(150,80,110,.18);
+  text-align:center;
+}
+
+h1,h2,h3{
+  font-family:'Oooh Baby',cursive;
+}
+
+h1{
+  font-size:52px;
+  color:#d95b91;
+  line-height:1.1;
+  margin-bottom:15px;
+}
+
+h2{
+  font-size:42px;
+  color:#d15c8d;
+  line-height:1.2;
+  margin-bottom:15px;
+}
+
+h3{
+  font-size:34px;
+  color:#d15c8d;
+}
+
+p{
+  line-height:1.7;
+  margin-bottom:15px;
+}
+
+.subtitle{
+  color:#8d6876;
+  margin-bottom:25px;
+}
+
+.heart{
+  font-size:55px;
+  animation:heartbeat 1.5s infinite;
+  margin-bottom:10px;
+}
+
+@keyframes heartbeat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.12)}
+}
+
+label{
+  display:block;
+  text-align:left;
+  font-weight:600;
+  margin:15px 0 7px;
+  color:#70495a;
+}
+
+input,textarea{
+  width:100%;
+  border:2px solid #f3d1df;
+  border-radius:15px;
+  padding:13px 15px;
+  font-family:'DM Sans',sans-serif;
+  font-size:15px;
+  outline:none;
+  background:#fffafd;
+}
+
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+input:focus,textarea:focus{
+  border-color:#df7da5;
+}
+
+button{
+  border:0;
+  border-radius:999px;
+  padding:13px 23px;
+  font-family:'DM Sans',sans-serif;
+  font-weight:700;
+  font-size:15px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#e96e9d,#d95789);
+  color:white;
+  box-shadow:0 8px 20px rgba(210,80,130,.22);
+  margin-top:18px;
+}
+
+button:active{
+  transform:scale(.97);
+}
+
+.secondary{
+  background:#fff0f5;
+  color:#c55482;
+  box-shadow:none;
+}
+
+.preview-box{
+  background:#fff6fa;
+  border:2px dashed #efb8cd;
+  border-radius:20px;
+  padding:22px;
+  margin:20px 0;
+  text-align:left;
+}
+
+.preview-box strong{
+  color:#cf5b88;
+}
+
+.link-box{
+  background:#fff5f9;
+  border:2px solid #f1c5d7;
+  padding:13px;
+  border-radius:14px;
+  word-break:break-all;
+  font-size:13px;
+  margin-top:20px;
+}
+
+.quiz-progress{
+  font-size:14px;
+  color:#b27a90;
+  margin-bottom:15px;
+}
+
+.question{
+  font-family:'Oooh Baby',cursive;
+  font-size:34px;
+  color:#cc5b88;
+  line-height:1.3;
+  margin:15px 0 25px;
+}
+
+.option{
+  width:100%;
+  margin:8px 0;
+  padding:14px;
+  border-radius:16px;
+  background:#fff7fa;
+  border:2px solid #f4d4e0;
+  color:#654655;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.option:hover{
+  background:#ffe9f2;
+  border-color:#e99ab8;
+  transform:translateY(-2px);
+}
+
+.reaction{
+  min-height:28px;
+  margin-top:15px;
+  color:#d45d8c;
+  font-weight:600;
+}
+
+.score{
+  font-family:'Oooh Baby',cursive;
+  font-size:45px;
+  color:#d55c8d;
+}
+
+.letter{
+  text-align:left;
+  background:#fffafc;
+  border:2px solid #f2d6e1;
+  border-radius:20px;
+  padding:22px;
+  white-space:pre-wrap;
+  line-height:1.9;
+  margin-top:20px;
+}
+
+.certificate{
+  position:relative;
+  background:
+    radial-gradient(circle at top left,#fff7d6,transparent 25%),
+    radial-gradient(circle at bottom right,#ffe5ef,transparent 30%),
+    #fffdf8;
+  border:10px double #e5a84b;
+  border-radius:18px;
+  padding:42px 22px;
+  box-shadow:
+    0 18px 45px rgba(180,120,70,.20),
+    inset 0 0 0 2px #f7d58b;
+  overflow:hidden;
+}
+
+.certificate:before{
+  content:"✦  ✧  ✦  ✧  ✦";
+  position:absolute;
+  top:12px;
+  left:0;
+  width:100%;
+  text-align:center;
+  color:#d99a38;
+  font-size:18px;
+  letter-spacing:5px;
+}
+
+.certificate:after{
+  content:"✦  ✧  ✦  ✧  ✦";
+  position:absolute;
+  bottom:12px;
+  left:0;
+  width:100%;
+  text-align:center;
+  color:#d99a38;
+  font-size:18px;
+  letter-spacing:5px;
+}
+
+.certificate h2{
+  color:#b97922;
+  font-size:38px;
+  margin-top:20px;
+}
+
+.cert-name{
+  font-family:'Oooh Baby',cursive;
+  font-size:38px;
+  color:#c66b91;
+  margin:22px 0;
+  padding:10px;
+  border-bottom:2px solid #e5b866;
+}
+
+.certificate p{
+  line-height:1.8;
+}
+
+.certificate-seal{
+  width:75px;
+  height:75px;
+  margin:20px auto;
+  border-radius:50%;
+  border:3px solid #d99a38;
+  background:#fff5d8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  box-shadow:0 5px 15px rgba(180,120,50,.18);
+}
+
+.balloon-area{
+  min-height:440px;
+  position:relative;
+  overflow:hidden;
+  margin-top:15px;
+}
+
+.balloon{
+  position:absolute;
+  width:110px;
+  height:135px;
+  border-radius:55% 55% 50% 50%;
+  background:linear-gradient(145deg,#ffb5cf,#e96c9d);
+  box-shadow:inset -10px -10px 18px rgba(150,50,90,.12);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  animation:float 3s ease-in-out infinite;
+}
+
+.balloon:after{
+  content:"";
+  position:absolute;
+  bottom:-8px;
+  width:14px;
+  height:14px;
+  background:#d85c8e;
+  transform:rotate(45deg);
+}
+
+.balloon:nth-child(1){left:5%;top:20px}
+.balloon:nth-child(2){right:5%;top:65px}
+.balloon:nth-child(3){left:38%;top:5px}
+.balloon:nth-child(4){left:12%;top:190px}
+.balloon:nth-child(5){right:15%;top:220px}
+.balloon:nth-child(6){left:42%;top:280px}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(-2deg)}
+  50%{transform:translateY(-12px) rotate(2deg)}
+}
+
+.cat{
+  width:78px;
+  height:78px;
+  pointer-events:none;
+}
+
+.quote-box{
+  min-height:70px;
+  margin-top:12px;
+  color:#d05888;
+  font-weight:700;
+  font-size:17px;
+}
+
+.final-heart{
+  font-size:90px;
+  animation:heartbeat 1.5s infinite;
+}
+
+.small{
+  font-size:13px;
+  color:#9c7a88;
+}
+
+.hidden{
+  display:none!important;
+}
+
+@media(max-width:400px){
+  h1{font-size:45px}
+  h2{font-size:36px}
+  .question{font-size:30px}
+  .certificate h2{font-size:33px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- CREATOR FORM -->
+<section id="screen1" class="screen active">
+<div class="card">
+
+<div class="heart">💗</div>
+
+<h1>Boyfriend Day Surprise</h1>
+
+<p class="subtitle">
+Create a little surprise for your favourite person 🥹💕
+</p>
+
+<label>His nickname 💕</label>
+<input id="nickname" placeholder="e.g. Omkar">
+
+<label>Your name 🌷</label>
+<input id="yourname" placeholder="e.g. Nandini">
+
+<label>Your personal message 💌</label>
+<textarea id="message" placeholder="Write something from your heart..."></textarea>
+
+<button onclick="createCard()">Create Surprise ✨</button>
+
+</div>
+</section>
+
+
+<!-- PREVIEW -->
+<section id="screen2" class="screen">
+<div class="card">
+
+<div class="heart">🥹</div>
+
+<h2>Your Surprise</h2>
+
+<p>
+Everything is ready for your favourite person 💕
+</p>
+
+<div class="preview-box">
+<p><strong>For:</strong> <span id="previewName"></span> 💗</p>
+<p><strong>From:</strong> <span id="previewFrom"></span> 🌷</p>
+</div>
+
+<button onclick="generateLink()">Generate My Link 🔗</button>
+
+</div>
+</section>
+
+
+<!-- LINK -->
+<section id="screen3" class="screen">
+<div class="card">
+
+<div class="heart">💌</div>
+
+<h2>It's Ready! 🎉</h2>
+
+<p>
+Send this link to him. When he opens it, the surprise will start directly with the quiz. 🥹❤️
+</p>
+
+<div class="link-box" id="generatedLink"></div>
+
+<button onclick="copyLink()">Copy Link 📋</button>
+
+<p id="copyMessage" class="small"></p>
+
+</div>
+</section>
+
+
+<!-- QUIZ -->
+<section id="screen4" class="screen">
+<div class="card">
+
+<div class="heart">👀</div>
+
+<h2>Okay Mister... 😌</h2>
+
+<p class="subtitle">
+Let's see how well you know your girl 💕
+</p>
+
+<div class="quiz-progress" id="quizProgress"></div>
+
+<div class="question" id="question"></div>
+
+<div id="options"></div>
+
+<div class="reaction" id="reaction"></div>
+
+</div>
+</section>
+
+
+<!-- QUIZ COMPLETE -->
+<section id="screen5" class="screen">
+<div class="card">
+
+<div class="heart">🎉</div>
+
+<h2>You Passed! 🥹❤️</h2>
+
+<div class="score">5 / 5</div>
+
+<p>
+Boyfriend level unlocked 🔓💗
+</p>
+
+<p>
+Okay... maybe you really do know me. 😂
+</p>
+
+<button onclick="openLetter()">Open Your Letter 💌</button>
+
+</div>
+</section>
+
+
+<!-- LETTER -->
+<section id="screen6" class="screen">
+<div class="card">
+
+<div class="heart">💌</div>
+
+<h2>A Little Letter For You</h2>
+
+<div class="letter" id="letterText"></div>
+
+<button onclick="showCertificate()">Next 🥹❤️</button>
+
+</div>
+</section>
+
+
+<!-- CERTIFICATE -->
+<section id="screen7" class="screen">
+<div class="card">
+
+<div class="certificate">
+
+<div class="certificate-seal">
+👑
+</div>
+
+<h2>Best Boyfriend<br>Certificate</h2>
+
+<p>This certificate is proudly awarded to</p>
+
+<div class="cert-name" id="certName"></div>
+
+<p>
+For being the person who makes ordinary days feel special,
+for the laughs, the care, the annoying moments,
+and all the little memories we keep creating together. 💕
+</p>
+
+<p>
+Officially certified as my favourite person. 🥹❤️
+</p>
+
+<p>
+✨ Valid forever ✨
+</p>
+
+</div>
+
+<button onclick="startBalloons()">One More Surprise 🎈</button>
+
+</div>
+</section>
+
+
+<!-- BALLOONS -->
+<section id="screen8" class="screen">
+<div class="card">
+
+<h2>Pop The Balloons 🎈</h2>
+
+<p>
+Each balloon has a little message for you. 💕
+</p>
+
+<div class="balloon-area" id="balloonArea"></div>
+
+<div class="quote-box" id="quoteBox">
+Pop a balloon 👀🎈
+</div>
+
+<button id="balloonNext" class="hidden" onclick="nextBalloon()">
+Continue ❤️
+</button>
+
+</div>
+</section>
+
+
+<!-- FINAL -->
+<section id="screen9" class="screen">
+<div class="card">
+
+<div class="final-heart">❤️</div>
+
+<h1 id="finalTitle">For You</h1>
+
+<p id="finalMessage"></p>
+
+<p>
+No matter how annoying you are... 😂<br>
+I'm still choosing you. Always. ♾️❤️
+</p>
+
+<h2>Happy Boyfriend Day! 🥹💕</h2>
+
+<p class="small">
+Made with lots of love 💗
+</p>
+
+</div>
+</section>
+
+
+<script>
+
+let cardData = {
+  n:"",
+  f:"",
+  m:""
 };
 
-const encoded =
-btoa(
-  encodeURIComponent(
-    JSON.stringify(data)
-  )
+let currentQuestion = 0;
+let score = 0;
+let currentBalloon = 0;
+
+const questions = [
+
+{
+q:"माझा mood खराब असेल तर मला काय हवं असतं? 🥺",
+options:[
+"🍫 Something sweet",
+"🫂 A hug",
+"😴 Sleep",
+"😂 तुझं annoying बोलणं"
+]
+},
+
+{
+q:"आपल्या दोघांमध्ये जास्त annoying कोण? 😂",
+options:[
+"😇 Me",
+"😈 You",
+"🤝 Both equally",
+"🥹 Nobody"
+]
+},
+
+{
+q:"मला तुझ्यातलं सगळ्यात जास्त काय आवडतं? ❤️",
+options:[
+"🥹 Your care",
+"😂 Your stupid jokes",
+"🫂 The way you make me feel safe",
+"💕 Everything about you"
+]
+},
+
+{
+q:"जर आपण एक दिवस पूर्णपणे free असू तर मी काय choose करेन? 👀",
+options:[
+"🎬 Movie + food",
+"🚗 Long drive",
+"🌆 बाहेर फिरायला",
+"🛌 पूर्ण दिवस together"
+]
+},
+
+{
+q:"मी तुला किती love करते? 🥹❤️",
+options:[
+"❤️ A lot",
+"💕 More than you know",
+"♾️ Infinitely",
+"😌 याला limitच नाही!"
+]
+}
+
+];
+
+const balloonQuotes = [
+
+"❤️ Love you more than you know.",
+
+"🥹 Glad to have you in my life.",
+
+"💕 You're my favourite person.",
+
+"😂 You're annoying... but you're MY annoying.",
+
+"🌙 Always with you.",
+
+"💗 I choose you, always."
+
+];
+
+
+function showScreen(number){
+
+document.querySelectorAll(".screen").forEach(screen=>{
+screen.classList.remove("active");
+});
+
+document.getElementById("screen"+number).classList.add("active");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+function createCard(){
+
+const nickname =
+document.getElementById("nickname").value.trim();
+
+const yourname =
+document.getElementById("yourname").value.trim();
+
+const message =
+document.getElementById("message").value.trim();
+
+if(!nickname || !yourname || !message){
+
+alert("Please fill everything first 🥹❤️");
+
+return;
+
+}
+
+cardData.n = nickname;
+cardData.f = yourname;
+cardData.m = message;
+
+document.getElementById("previewName").textContent = nickname;
+document.getElementById("previewFrom").textContent = yourname;
+
+showScreen(2);
+
+}
+
+
+function generateLink(){
+
+const data = encodeURIComponent(
+JSON.stringify(cardData)
 );
+
+const encoded = btoa(data);
 
 const link =
 window.location.origin +
@@ -28,93 +747,299 @@ window.location.pathname +
 "?card=" +
 encoded;
 
-const result =
-document.getElementById("linkResult");
+document.getElementById("generatedLink").textContent = link;
 
-result.innerHTML =
-"<p style='background:#fff0f6;padding:13px;border-radius:15px;word-break:break-all;'>" +
-"🔗 Your ready surprise link:<br><br>" +
-link +
-"</p>";
+showScreen(3);
 
-if(navigator.clipboard){
+}
 
-navigator.clipboard.writeText(link).then(()=>{
 
-result.innerHTML +=
-"<b style='color:#d23f72'>🎀 Link copied! ❤️</b>";
+async function copyLink(){
 
-});
+const link =
+document.getElementById("generatedLink").textContent;
+
+try{
+
+await navigator.clipboard.writeText(link);
+
+document.getElementById("copyMessage").textContent =
+"Copied! Now send it to him 🥹💗";
+
+}catch{
+
+document.getElementById("copyMessage").textContent =
+"Long press the link and copy it 💕";
 
 }
 
 }
+
 
 function loadSharedCard(){
 
 const params =
 new URLSearchParams(window.location.search);
 
-const card =
+const encoded =
 params.get("card");
 
-if(!card){
+if(!encoded){
+
+showScreen(1);
+
 return;
+
 }
 
 try{
 
-const data =
-JSON.parse(
-decodeURIComponent(
-atob(card)
-)
-);
+const decoded =
+decodeURIComponent(atob(encoded));
 
-document.getElementById("nickname").value =
-data.n || "";
+cardData =
+JSON.parse(decoded);
 
-document.getElementById("yourname").value =
-data.f || "";
+document.getElementById("letterText").textContent =
+cardData.m;
 
-document.getElementById("message").value =
-data.m || "";
+document.getElementById("certName").textContent =
+cardData.n;
 
-document.getElementById("screen1")
-.classList.remove("active");
+document.getElementById("finalTitle").textContent =
+"For " + cardData.n + " ❤️";
 
-document.getElementById("postName").textContent =
-data.n || "Someone Special";
+document.getElementById("finalMessage").textContent =
+cardData.m;
 
-document.getElementById("letterName").textContent =
-data.n || "Someone Special";
-
-document.getElementById("letterMessage").textContent =
-data.m || "";
-
-document.getElementById("letterFrom").textContent =
-data.f || "";
-
-document.getElementById("certificateName").textContent =
-data.n || "";
-
-document.getElementById("certificateFrom").textContent =
-data.f || "";
-
-document.getElementById("finalName").textContent =
-data.n || "";
-
-document.getElementById("finalFrom").textContent =
-data.f || "";
-
-showScreen(2);
+startQuiz();
 
 }catch(error){
 
-console.log("Shared card could not be loaded.");
+console.error(error);
+
+showScreen(1);
 
 }
 
 }
 
-loadSharedCard();
+
+function startQuiz(){
+
+currentQuestion = 0;
+score = 0;
+
+showScreen(4);
+
+showQuestion();
+
+}
+
+
+function showQuestion(){
+
+const q =
+questions[currentQuestion];
+
+document.getElementById("quizProgress").textContent =
+"Question " + (currentQuestion+1) +
+" of " + questions.length;
+
+document.getElementById("question").textContent =
+q.q;
+
+const options =
+document.getElementById("options");
+
+options.innerHTML = "";
+
+document.getElementById("reaction").textContent = "";
+
+q.options.forEach(option=>{
+
+const button =
+document.createElement("button");
+
+button.className = "option";
+
+button.textContent = option;
+
+button.onclick = () =>
+answerQuestion();
+
+options.appendChild(button);
+
+});
+
+}
+
+
+function answerQuestion(){
+
+score++;
+
+document.getElementById("reaction").textContent =
+"That's actually a cute answer 🥹❤️";
+
+setTimeout(()=>{
+
+currentQuestion++;
+
+if(currentQuestion >= questions.length){
+
+showScreen(5);
+
+}else{
+
+showQuestion();
+
+}
+
+},700);
+
+}
+
+
+function openLetter(){
+
+document.getElementById("letterText").textContent =
+cardData.m;
+
+showScreen(6);
+
+}
+
+
+function showCertificate(){
+
+document.getElementById("certName").textContent =
+cardData.n;
+
+showScreen(7);
+
+}
+
+
+function catSVG(index){
+
+const faces = [
+
+"😺",
+
+"😸",
+
+"😻",
+
+"😽",
+
+"😹",
+
+"😼"
+
+];
+
+return `
+<svg class="cat"
+viewBox="0 0 100 100"
+xmlns="http://www.w3.org/2000/svg">
+
+<text
+x="50"
+y="65"
+text-anchor="middle"
+font-size="58">
+
+${faces[index]}
+
+</text>
+
+</svg>
+`;
+
+}
+
+
+function startBalloons(){
+
+currentBalloon = 0;
+
+const area =
+document.getElementById("balloonArea");
+
+area.innerHTML = "";
+
+document.getElementById("quoteBox").textContent =
+"Pop a balloon 👀🎈";
+
+document.getElementById("balloonNext")
+.classList.add("hidden");
+
+for(let i=0;i<6;i++){
+
+const balloon =
+document.createElement("div");
+
+balloon.className = "balloon";
+
+balloon.innerHTML =
+catSVG(i);
+
+balloon.onclick = () =>
+popBalloon(balloon,i);
+
+area.appendChild(balloon);
+
+}
+
+showScreen(8);
+
+}
+
+
+function popBalloon(balloon,index){
+
+if(balloon.classList.contains("popped"))
+return;
+
+balloon.classList.add("popped");
+
+balloon.style.transform =
+"scale(0)";
+
+balloon.style.opacity =
+"0";
+
+document.getElementById("quoteBox").textContent =
+balloonQuotes[index];
+
+currentBalloon++;
+
+if(currentBalloon >= 6){
+
+setTimeout(()=>{
+
+document.getElementById("balloonNext")
+.classList.remove("hidden");
+
+},500);
+
+}
+
+}
+
+
+function nextBalloon(){
+
+showScreen(9);
+
+}
+
+
+window.onload =
+loadSharedCard;
+
+</script>
+
+</body>
+</html>
