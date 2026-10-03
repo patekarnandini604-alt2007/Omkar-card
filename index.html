@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create Your Love Card 💌</title>
+<title>For My Favourite Person 💌</title>
 
 <style>
+
 *{
   box-sizing:border-box;
 }
@@ -15,39 +16,60 @@ body{
   margin:0;
   font-family:Arial,sans-serif;
   min-height:100vh;
-  background:linear-gradient(135deg,#ffd6e5,#fff4f8);
-  color:#512536;
+  background:linear-gradient(135deg,#ffdce9,#fff5f8);
+  color:#542536;
 }
 
 .container{
   width:100%;
-  max-width:440px;
+  max-width:450px;
   margin:auto;
-  padding:22px 16px 40px;
+  padding:20px 15px 50px;
 }
 
-.creator{
+.screen{
+  display:none;
+  animation:fade .6s ease;
+}
+
+.screen.active{
+  display:block;
+}
+
+@keyframes fade{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.box{
   background:white;
-  border-radius:28px;
-  padding:24px 20px;
+  border-radius:30px;
+  padding:25px 20px;
   box-shadow:0 15px 45px rgba(100,40,70,.16);
 }
 
 .logo{
   text-align:center;
-  font-size:42px;
+  font-size:48px;
+  margin-bottom:5px;
 }
 
 h1{
   text-align:center;
+  color:#d64d7b;
   margin:8px 0;
-  color:#d94f7c;
 }
 
 .subtitle{
   text-align:center;
-  color:#9b6478;
-  line-height:1.5;
+  color:#996779;
+  line-height:1.6;
 }
 
 label{
@@ -58,46 +80,40 @@ label{
 }
 
 input[type="text"],
-textarea,
-select{
+textarea{
   width:100%;
   border:1px solid #efbfd0;
-  border-radius:14px;
-  padding:13px;
+  border-radius:15px;
+  padding:14px;
   font-size:15px;
-  background:#fffafa;
   outline:none;
+  background:#fffafb;
 }
 
 textarea{
-  min-height:120px;
+  min-height:130px;
   resize:vertical;
 }
 
 input:focus,
-textarea:focus,
-select:focus{
+textarea:focus{
   border-color:#d94f7c;
 }
 
-.photoBox{
-  border:2px dashed #e6a9be;
+.photo{
+  border:2px dashed #e3a6bb;
   border-radius:18px;
-  padding:20px 12px;
+  padding:18px;
   text-align:center;
   margin-top:8px;
 }
 
-.photoBox input{
-  width:100%;
-}
-
-.previewPhoto{
+.photo img{
   display:none;
   width:100%;
-  max-height:300px;
+  max-height:250px;
   object-fit:cover;
-  border-radius:20px;
+  border-radius:18px;
   margin-top:15px;
 }
 
@@ -105,233 +121,504 @@ button{
   width:100%;
   border:0;
   border-radius:25px;
-  padding:14px;
-  margin-top:20px;
+  padding:15px;
+  margin-top:18px;
   background:#dc5883;
   color:white;
   font-size:16px;
   font-weight:bold;
+  cursor:pointer;
 }
 
 button:active{
   transform:scale(.97);
 }
 
-.preview{
-  display:none;
-  margin-top:25px;
+.back{
+  background:#b75a91;
 }
 
-.card{
-  border-radius:30px;
+/* PREVIEW */
+
+.post{
+  background:white;
+  border-radius:25px;
+  overflow:hidden;
+  box-shadow:0 15px 45px rgba(80,30,60,.2);
+}
+
+.postPhoto{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+  display:none;
+}
+
+.postContent{
   padding:25px 20px;
   text-align:center;
-  background:linear-gradient(145deg,#fff7fa,#ffe3ed);
-  box-shadow:0 12px 35px rgba(100,40,70,.18);
-  animation:appear .7s ease;
 }
 
-@keyframes appear{
-  from{
-    opacity:0;
-    transform:translateY(25px) scale(.97);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
+.postContent h2{
+  color:#d54273;
+  font-size:26px;
 }
 
-.card h2{
-  color:#d43f72;
-  font-size:27px;
-}
-
-.cardMessage{
-  white-space:pre-wrap;
-  line-height:1.8;
-  margin-top:18px;
-}
-
-.cardPhoto{
-  display:none;
-  width:100%;
-  max-height:320px;
-  object-fit:cover;
+.tap{
+  margin-top:20px;
+  background:#fff0f5;
+  border:2px dashed #e397b0;
   border-radius:20px;
-  margin:18px 0;
+  padding:20px;
+  animation:pulse 1.5s infinite;
 }
 
-.heart{
-  font-size:48px;
-  animation:heartBeat 1.2s infinite;
+@keyframes pulse{
+  50%{
+    transform:scale(1.03);
+  }
 }
 
-@keyframes heartBeat{
+/* LETTER */
+
+.letterArea{
+  perspective:1000px;
+}
+
+.envelope{
+  background:#f6c7d8;
+  border-radius:20px;
+  padding:45px 20px;
+  text-align:center;
+  cursor:pointer;
+  box-shadow:0 15px 35px rgba(80,30,60,.18);
+}
+
+.envelope .emoji{
+  font-size:65px;
+}
+
+.envelope h2{
+  color:#b73565;
+}
+
+.letter{
+  display:none;
+  background:#fffdf7;
+  padding:30px 22px;
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  margin-top:20px;
+  position:relative;
+}
+
+.letter:before{
+  content:"";
+  position:absolute;
+  inset:10px;
+  border:1px solid #e9c4cf;
+  pointer-events:none;
+}
+
+.letterContent{
+  position:relative;
+  z-index:2;
+}
+
+.letter h2{
+  text-align:center;
+  color:#c73e6b;
+}
+
+.message{
+  white-space:pre-wrap;
+  line-height:1.9;
+  font-size:16px;
+}
+
+/* CERTIFICATE */
+
+.certificate{
+  background:linear-gradient(135deg,#fff9e7,#ffe9b5);
+  border:8px double #c89436;
+  padding:35px 18px;
+  text-align:center;
+  border-radius:8px;
+}
+
+.certificate h1{
+  color:#9a6519;
+  font-family:Georgia,serif;
+}
+
+.certificate h2{
+  font-family:Georgia,serif;
+  font-size:28px;
+  color:#6f4514;
+}
+
+.certificate p{
+  line-height:1.7;
+}
+
+.badge{
+  font-size:55px;
+}
+
+/* BALLOONS */
+
+.balloonArea{
+  min-height:430px;
+  position:relative;
+  overflow:hidden;
+  border-radius:25px;
+  background:linear-gradient(#fff1f7,#ffe0ec);
+}
+
+.balloon{
+  position:absolute;
+  width:72px;
+  height:90px;
+  border-radius:50% 50% 48% 48%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  cursor:pointer;
+  animation:float 3s ease-in-out infinite;
+  box-shadow:inset -8px -10px 15px rgba(0,0,0,.08);
+}
+
+.balloon:after{
+  content:"";
+  position:absolute;
+  bottom:-35px;
+  width:2px;
+  height:38px;
+  background:#9c7784;
+}
+
+@keyframes float{
+  50%{
+    transform:translateY(-12px);
+  }
+}
+
+.quote{
+  display:none;
+  text-align:center;
+  padding:25px;
+  background:white;
+  border-radius:22px;
+  margin-top:20px;
+  animation:fade .5s ease;
+}
+
+.quoteText{
+  font-size:22px;
+  color:#d23f72;
+  line-height:1.6;
+  font-weight:bold;
+}
+
+/* FINAL */
+
+.final{
+  text-align:center;
+}
+
+.finalHeart{
+  font-size:75px;
+  animation:heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat{
   50%{
     transform:scale(1.18);
   }
 }
 
-.divider{
-  margin:20px auto;
-  width:70px;
-  height:2px;
-  background:#e48aa5;
-}
-
-.secondary{
-  background:#b5549c;
-}
-
-.copyBox{
-  display:none;
-  margin-top:15px;
-  padding:12px;
-  border-radius:14px;
-  background:#fff0f5;
-  font-size:13px;
-  word-break:break-all;
-}
-
-.theme1{
-  background:linear-gradient(145deg,#fff7fa,#ffe3ed);
-}
-
-.theme2{
-  background:linear-gradient(145deg,#fff9e8,#ffe9b8);
-}
-
-.theme3{
-  background:linear-gradient(145deg,#f2f0ff,#ddd8ff);
-}
-
-.theme4{
-  background:linear-gradient(145deg,#eafff5,#cffff0);
-}
-
 .small{
   text-align:center;
-  font-size:12px;
   color:#a47787;
+  font-size:12px;
   margin-top:20px;
 }
+
 </style>
 </head>
+
 
 <body>
 
 <div class="container">
 
-<div class="creator">
+
+<!-- SCREEN 1 -->
+
+<div id="screen1" class="screen active">
+
+<div class="box">
 
 <div class="logo">💌</div>
 
-<h1>Create Your Card</h1>
+<h1>Create a Little Surprise</h1>
 
 <p class="subtitle">
-Make a beautiful surprise for someone special ❤️
+Make something special for your favourite person ❤️
 </p>
 
-<label>💗 Name</label>
+
+<label>💕 His Nickname</label>
 
 <input
-id="name"
+id="nickname"
 type="text"
-placeholder="Enter their name"
+placeholder="e.g. Omkar, Baby, Love..."
 >
+
+
+<label>💗 Your Name</label>
+
+<input
+id="yourname"
+type="text"
+placeholder="Your name"
+>
+
 
 <label>💌 Your Message</label>
 
 <textarea
 id="message"
-placeholder="Write your special message here..."
+placeholder="Write everything you want to tell him..."
 ></textarea>
 
-<label>📸 Add Photo</label>
 
-<div class="photoBox">
+<label>📸 Add Your Favourite Photo</label>
 
-<p>Choose a photo from your phone</p>
+<div class="photo">
+
+<p>Choose a photo from your phone ❤️</p>
 
 <input
-id="photo"
+id="photoInput"
 type="file"
 accept="image/*"
 >
 
-<img
-id="uploadedPreview"
-class="previewPhoto"
->
+<img id="photoPreview">
 
 </div>
 
-<label>🎨 Choose Theme</label>
 
-<select id="theme">
-
-<option value="theme1">💕 Pink Love</option>
-
-<option value="theme2">🌸 Soft Peach</option>
-
-<option value="theme3">💜 Dreamy Purple</option>
-
-<option value="theme4">💚 Soft Mint</option>
-
-</select>
-
-<button onclick="createCard()">
-✨ Preview My Card
+<button onclick="makePreview()">
+✨ Create My Surprise
 </button>
 
 </div>
 
+</div>
 
-<div id="preview" class="preview">
 
-<div id="card" class="card theme1">
+<!-- SCREEN 2 -->
 
-<div class="heart">❤️</div>
+<div id="screen2" class="screen">
 
-<h2>
-For <span id="cardName">Someone Special</span>
-</h2>
+<div class="post">
 
-<div class="divider"></div>
+<img id="postPhoto" class="postPhoto">
 
-<img
-id="cardPhoto"
-class="cardPhoto"
->
+<div class="postContent">
 
-<p
-id="cardMessage"
-class="cardMessage">
-Your message will appear here...
-</p>
+<p>💌 A little something for</p>
 
-<div class="divider"></div>
+<h2 id="postName"></h2>
 
 <p>
-Made with love 💕
+Someone who makes my world a little more beautiful ❤️
+</p>
+
+<div class="tap" onclick="openLetter()">
+
+<div style="font-size:45px;">💌</div>
+
+<b>Tap the letter to open</b>
+
+<p>There's something waiting for you...</p>
+
+</div>
+
+</div>
+
+</div>
+
+<button class="back" onclick="showScreen(1)">
+← Edit Details
+</button>
+
+</div>
+
+
+<!-- SCREEN 3 -->
+
+<div id="screen3" class="screen">
+
+<div class="letterArea">
+
+<div class="envelope" onclick="showLetter()">
+
+<div class="emoji">💌</div>
+
+<h2>For <span id="letterName"></span></h2>
+
+<p>Tap to open your letter ❤️</p>
+
+</div>
+
+
+<div id="letter" class="letter">
+
+<div class="letterContent">
+
+<h2>To My Favourite Person ❤️</h2>
+
+<p class="message" id="letterMessage"></p>
+
+<p style="text-align:center;font-size:30px;">
+❤️ ❤️ ❤️
+</p>
+
+<p style="text-align:center;">
+With love,<br>
+<b id="letterFrom"></b>
 </p>
 
 </div>
 
-<button onclick="shareCard()">
-🔗 Share Card
-</button>
-
-<button
-class="secondary"
-onclick="copyLink()">
-📋 Copy Page Link
-</button>
-
-<div id="copyBox" class="copyBox"></div>
+</div>
 
 </div>
+
+
+<button onclick="showScreen(4)">
+🏆 Open Your Boyfriend Certificate
+</button>
+
+</div>
+
+
+<!-- SCREEN 4 -->
+
+<div id="screen4" class="screen">
+
+<div class="certificate" id="certificate">
+
+<div class="badge">🏆</div>
+
+<p>THIS CERTIFICATE IS PROUDLY PRESENTED TO</p>
+
+<h2 id="certificateName"></h2>
+
+<h1>BEST BOYFRIEND</h1>
+
+<p>
+For being caring, annoying, cute,
+supportive and absolutely irreplaceable. ❤️
+</p>
+
+<p>
+Awarded with infinite love 💕
+</p>
+
+<p>
+From: <b id="certificateFrom"></b>
+</p>
+
+<div style="font-size:35px;">
+❤️ 🥇 ❤️
+</div>
+
+</div>
+
+<button onclick="downloadCertificate()">
+⬇️ Download Certificate
+</button>
+
+<button onclick="showScreen(5)">
+🎈 Continue to Balloon Surprise
+</button>
+
+</div>
+
+
+<!-- SCREEN 5 -->
+
+<div id="screen5" class="screen">
+
+<div class="box">
+
+<h1>🎈 Pop the Balloons!</h1>
+
+<p class="subtitle">
+Each balloon has a little surprise for you ❤️
+</p>
+
+<div class="balloonArea" id="balloonArea">
+
+</div>
+
+<div class="quote" id="quote">
+
+<div class="quoteText" id="quoteText"></div>
+
+<button onclick="nextBalloon()">
+🎈 Pop Another
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SCREEN 6 -->
+
+<div id="screen6" class="screen">
+
+<div class="box final">
+
+<div class="finalHeart">❤️</div>
+
+<h1>One Last Thing...</h1>
+
+<p class="subtitle">
+
+I'm so glad to have you in my life.
+
+<br><br>
+
+I love you more than words can explain. 🥹❤️
+
+</p>
+
+<h2 id="finalName"></h2>
+
+<p>
+Made with love by <b id="finalFrom"></b> 💕
+</p>
+
+<button onclick="generateLink()">
+🔗 Generate My Link
+</button>
+
+<div id="linkResult"></div>
+
+</div>
+
+</div>
+
 
 <p class="small">
 Made with ❤️
@@ -342,32 +629,50 @@ Made with ❤️
 
 <script>
 
-let photoData = "";
+let photoData="";
 
-const photoInput =
-document.getElementById("photo");
-
-const uploadedPreview =
-document.getElementById("uploadedPreview");
+let currentBalloon=0;
 
 
-photoInput.addEventListener("change", function(){
+const quotes=[
 
-const file = this.files[0];
+"❤️ Love you more than you know.",
 
-if(!file){
-return;
-}
+"🥹 Glad to have you in my life.",
 
-const reader = new FileReader();
+"💕 You're my favourite person.",
 
-reader.onload = function(e){
+"😂 Yes, you're annoying... but you're MY annoying.",
 
-photoData = e.target.result;
+"🫶🏻 I'd choose you again and again.",
 
-uploadedPreview.src = photoData;
+"💗 Thank you for being you."
 
-uploadedPreview.style.display = "block";
+];
+
+
+const photoInput=
+document.getElementById("photoInput");
+
+const photoPreview=
+document.getElementById("photoPreview");
+
+
+photoInput.addEventListener("change",function(){
+
+const file=this.files[0];
+
+if(!file)return;
+
+const reader=new FileReader();
+
+reader.onload=function(e){
+
+photoData=e.target.result;
+
+photoPreview.src=photoData;
+
+photoPreview.style.display="block";
 
 };
 
@@ -376,153 +681,304 @@ reader.readAsDataURL(file);
 });
 
 
-function createCard(){
+function showScreen(number){
 
-const name =
-document.getElementById("name").value.trim();
+document
+.querySelectorAll(".screen")
+.forEach(s=>s.classList.remove("active"));
 
-const message =
+document
+.getElementById("screen"+number)
+.classList.add("active");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+function makePreview(){
+
+const nickname=
+document.getElementById("nickname").value.trim();
+
+const yourname=
+document.getElementById("yourname").value.trim();
+
+const message=
 document.getElementById("message").value.trim();
 
-const theme =
-document.getElementById("theme").value;
 
+if(!nickname){
 
-if(name === ""){
+alert("Enter his nickname ❤️");
 
-alert("Please enter a name ❤️");
+return;
+
+}
+
+if(!yourname){
+
+alert("Enter your name 💗");
+
+return;
+
+}
+
+if(!message){
+
+alert("Write your message 💌");
 
 return;
 
 }
 
 
-if(message === ""){
-
-alert("Please write your message 💌");
-
-return;
-
-}
+document.getElementById("postName").textContent=
+nickname;
 
 
-document.getElementById("cardName").textContent =
-name;
-
-document.getElementById("cardMessage").textContent =
-message;
-
-
-const card =
-document.getElementById("card");
-
-card.className =
-"card " + theme;
-
-
-const cardPhoto =
-document.getElementById("cardPhoto");
+const postPhoto=
+document.getElementById("postPhoto");
 
 
 if(photoData){
 
-cardPhoto.src = photoData;
+postPhoto.src=photoData;
 
-cardPhoto.style.display = "block";
+postPhoto.style.display="block";
 
 }else{
 
-cardPhoto.style.display = "none";
+postPhoto.style.display="none";
 
 }
 
 
-document.getElementById("preview").style.display =
-"block";
+showScreen(2);
+
+}
 
 
-window.scrollTo({
+function openLetter(){
 
-top:document.body.scrollHeight,
+document.getElementById("letterName").textContent=
+document.getElementById("nickname").value;
 
-behavior:"smooth"
+document.getElementById("letterMessage").textContent=
+document.getElementById("message").value;
+
+document.getElementById("letterFrom").textContent=
+document.getElementById("yourname").value;
+
+showScreen(3);
+
+}
+
+
+function showLetter(){
+
+document.getElementById("letter").style.display="block";
+
+document.querySelector(".envelope").style.display="none";
+
+}
+
+
+function prepareCertificate(){
+
+document.getElementById("certificateName").textContent=
+document.getElementById("nickname").value;
+
+document.getElementById("certificateFrom").textContent=
+document.getElementById("yourname").value;
+
+}
+
+
+document
+.getElementById("screen4")
+.addEventListener("click",prepareCertificate);
+
+
+function downloadCertificate(){
+
+const certificate=
+document.getElementById("certificate").innerText;
+
+const blob=
+new Blob([certificate],{type:"text/plain"});
+
+const url=
+URL.createObjectURL(blob);
+
+const a=
+document.createElement("a");
+
+a.href=url;
+
+a.download="Best-Boyfriend-Certificate.txt";
+
+a.click();
+
+URL.revokeObjectURL(url);
+
+}
+
+
+function createBalloons(){
+
+const area=
+document.getElementById("balloonArea");
+
+area.innerHTML="";
+
+const positions=[
+
+[10,20],
+[65,15],
+[35,35],
+[75,50],
+[15,60],
+[45,70]
+
+];
+
+
+positions.forEach((pos,index)=>{
+
+const balloon=
+document.createElement("div");
+
+balloon.className="balloon";
+
+balloon.style.left=pos[0]+"%";
+
+balloon.style.top=pos[1]+"%";
+
+balloon.textContent="🎈";
+
+balloon.onclick=function(){
+
+popBalloon(index,balloon);
+
+};
+
+area.appendChild(balloon);
 
 });
 
 }
 
 
-async function shareCard(){
+function popBalloon(index,balloon){
 
-const name =
-document.getElementById("name").value;
+if(index!==currentBalloon)return;
 
-const message =
+balloon.style.display="none";
+
+document.getElementById("quoteText").textContent=
+quotes[currentBalloon];
+
+document.getElementById("quote").style.display=
+"block";
+
+}
+
+
+function nextBalloon(){
+
+currentBalloon++;
+
+document.getElementById("quote").style.display="none";
+
+if(currentBalloon>=quotes.length){
+
+showScreen(6);
+
+return;
+
+}
+
+createBalloons();
+
+}
+
+
+document
+.getElementById("screen5")
+.addEventListener("click",function(){
+
+if(!document.querySelector(".balloon")){
+
+createBalloons();
+
+}
+
+});
+
+
+function generateLink(){
+
+const nickname=
+document.getElementById("nickname").value;
+
+const yourname=
+document.getElementById("yourname").value;
+
+const message=
 document.getElementById("message").value;
 
 
-const shareText =
-"💌 A special card for " +
-name +
-"\n\n" +
-message +
-"\n\n❤️";
+const data={
+n:nickname,
+f:yourname,
+m:message
+};
 
 
-if(navigator.share){
-
-try{
-
-await navigator.share({
-
-title:"A Special Card 💌",
-
-text:shareText,
-
-url:window.location.href
-
-});
-
-}catch(error){
-
-console.log(error);
-
-}
-
-}else{
-
-copyLink();
-
-}
-
-}
-
-
-async function copyLink(){
-
-const link =
-window.location.href;
-
-try{
-
-await navigator.clipboard.writeText(link);
-
-document.getElementById("copyBox").style.display =
-"block";
-
-document.getElementById("copyBox").textContent =
-"Link copied! ❤️ " + link;
-
-}catch(error){
-
-prompt(
-"Copy this link:",
-link
+const encoded=
+btoa(
+encodeURIComponent(
+JSON.stringify(data)
+)
 );
 
-}
+
+const link=
+window.location.origin+
+window.location.pathname+
+"?card="+encoded;
+
+
+const result=
+document.getElementById("linkResult");
+
+result.innerHTML=
+"<p style='word-break:break-all;background:#fff0f5;padding:12px;border-radius:12px;'>"+
+link+
+"</p>";
+
+
+navigator.clipboard
+.writeText(link)
+.then(()=>{
+
+result.innerHTML+=
+"<b style='color:#d23f72;'>❤️ Link copied!</b>";
+
+})
+.catch(()=>{});
 
 }
+
+
+document
+.getElementById("screen5")
+.addEventListener("click",createBalloons);
+
 
 </script>
 
