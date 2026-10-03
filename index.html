@@ -19,8 +19,7 @@
 body{
   min-height:100vh;
   font-family:'DM Sans',sans-serif;
-  background:
-    radial-gradient(circle at top,#ffdbe8 0%,#fff3f7 38%,#fff 100%);
+  background:radial-gradient(circle at top,#ffdbe8,#fff3f7 45%,#fff);
   color:#4a2634;
   overflow-x:hidden;
 }
@@ -41,8 +40,7 @@ body{
 .card{
   width:100%;
   max-width:520px;
-  background:rgba(255,255,255,.9);
-  border:1px solid rgba(255,255,255,.8);
+  background:rgba(255,255,255,.93);
   border-radius:28px;
   padding:28px 20px;
   box-shadow:0 20px 60px rgba(128,45,77,.15);
@@ -92,11 +90,6 @@ textarea{
   resize:vertical;
 }
 
-input:focus,textarea:focus{
-  border-color:#e8799d;
-  box-shadow:0 0 0 3px rgba(232,121,157,.12);
-}
-
 button{
   border:0;
   border-radius:999px;
@@ -109,7 +102,6 @@ button{
   font-weight:700;
   cursor:pointer;
   box-shadow:0 8px 20px rgba(216,62,112,.22);
-  transition:.2s;
 }
 
 button:active{
@@ -190,10 +182,6 @@ button:active{
   margin:9px 0;
   border-radius:17px;
   font-weight:500;
-}
-
-.option:hover{
-  background:#fff2f6;
 }
 
 .reaction{
@@ -307,10 +295,7 @@ button:active{
   position:relative;
   overflow:hidden;
   min-height:520px;
-  background:
-    radial-gradient(circle at 20% 20%,#fff 0 8%,transparent 9%),
-    radial-gradient(circle at 80% 30%,#ffe3ed 0 7%,transparent 8%),
-    linear-gradient(180deg,#fff5f8,#ffe7ef);
+  background:linear-gradient(180deg,#fff5f8,#ffe7ef);
   border-radius:25px;
   padding:25px 15px;
 }
@@ -340,7 +325,6 @@ button:active{
   height:190px;
   border-radius:50%;
   background:#ffd8e5;
-  position:relative;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -515,90 +499,125 @@ button:active{
   h1{font-size:42px}
   h2{font-size:34px}
   .question{font-size:28px}
-  .cat{width:165px;height:165px;font-size:90px}
+  .cat{
+    width:165px;
+    height:165px;
+    font-size:90px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- SCREEN 1 : CREATOR FORM -->
+<!-- CREATOR -->
 <section class="screen active" id="screen1">
   <div class="card">
     <h1>For Your Favourite Person ❤️</h1>
+
     <p class="small">
       Create a little surprise for your boyfriend 🥹💕
     </p>
 
     <input id="nickname" placeholder="His nickname ❤️">
+
     <input id="yourname" placeholder="Your name 💕">
 
     <textarea id="personalMessage"
       placeholder="Write your personal message here... 🥹❤️"></textarea>
 
-    <button onclick="createCard()">Create Surprise ✨</button>
+    <button onclick="createCard()">
+      Create Surprise ✨
+    </button>
   </div>
 </section>
 
 
-<!-- SCREEN 2 : PREVIEW -->
+<!-- PREVIEW -->
 <section class="screen" id="screen2">
   <div class="card">
+
     <h2>Preview 💌</h2>
 
     <div class="preview-box">
+
       <div class="preview-name" id="previewName"></div>
-      <div class="message-preview" id="previewMessage"></div>
+
+      <div class="message-preview"
+           id="previewMessage"></div>
+
     </div>
 
-    <button onclick="generateLink()">Looks Perfect ❤️</button>
+    <button onclick="generateLink()">
+      Looks Perfect ❤️
+    </button>
+
     <br>
-    <button class="secondary" onclick="goTo('screen1')">Edit</button>
+
+    <button class="secondary"
+            onclick="goTo('screen1')">
+      Edit
+    </button>
+
   </div>
 </section>
 
 
-<!-- SCREEN 3 : LINK -->
+<!-- LINK -->
 <section class="screen" id="screen3">
   <div class="card">
+
     <h2>Your Surprise Is Ready! 🎉</h2>
 
     <p>
       हा link त्याला send कर ❤️<br>
-      Link open केल्यावर त्याला direct quiz दिसेल.
+      Link open केल्यावर direct quiz दिसेल.
     </p>
 
-    <div class="link-box" id="generatedLink"></div>
+    <div class="link-box"
+         id="generatedLink"></div>
 
-    <button onclick="copyLink()">Copy Link 💌</button>
+    <button onclick="copyLink()">
+      Copy Link 💌
+    </button>
+
   </div>
 </section>
 
 
-<!-- SCREEN 4 : QUIZ -->
+<!-- QUIZ -->
 <section class="screen" id="screen4">
   <div class="card">
 
-    <p class="small" id="questionNumber">Question 1 of 5</p>
+    <p class="small"
+       id="questionNumber">
+      Question 1 of 5
+    </p>
 
     <div class="progress">
-      <div class="progress-bar" id="progressBar"></div>
+      <div class="progress-bar"
+           id="progressBar"></div>
     </div>
 
-    <div class="question" id="questionText"></div>
+    <div class="question"
+         id="questionText"></div>
 
     <div id="options"></div>
 
-    <div class="reaction" id="reaction"></div>
+    <div class="reaction"
+         id="reaction"></div>
 
   </div>
 </section>
 
 
-<!-- SCREEN 5 : QUIZ COMPLETE -->
+<!-- COMPLETE -->
 <section class="screen" id="screen5">
   <div class="card">
-    <div style="font-size:65px;">🎉</div>
+
+    <div style="font-size:65px;">
+      🎉
+    </div>
 
     <h2>You Passed! ❤️</h2>
 
@@ -610,26 +629,35 @@ button:active{
       Boyfriend Level Successfully Unlocked 🔓💕
     </p>
 
-    <button onclick="openLetter()">Open Your Letter 💌</button>
+    <button onclick="openLetter()">
+      Open Your Letter 💌
+    </button>
+
   </div>
 </section>
 
 
-<!-- SCREEN 6 : LETTER -->
+<!-- LETTER -->
 <section class="screen" id="screen6">
   <div class="card">
+
     <h2>For You, My Love 💌</h2>
 
-    <div class="letter" id="letterText"></div>
+    <div class="letter"
+         id="letterText"></div>
 
-    <div class="signature" id="letterSignature"></div>
+    <div class="signature"
+         id="letterSignature"></div>
 
-    <button onclick="showCertificate()">Continue ❤️</button>
+    <button onclick="showCertificate()">
+      Continue ❤️
+    </button>
+
   </div>
 </section>
 
 
-<!-- SCREEN 7 : CERTIFICATE -->
+<!-- CERTIFICATE -->
 <section class="screen" id="screen7">
   <div class="card">
 
@@ -647,13 +675,17 @@ button:active{
         👑
       </div>
 
-      <div class="cert-name" id="certName"></div>
+      <div class="cert-name"
+           id="certName"></div>
 
       <div class="cert-text">
-        This certificate is proudly presented to the one<br>
-        who makes ordinary days feel special,<br>
-        makes me laugh when I don't want to,<br>
-        and somehow became my favourite person. ❤️
+
+        This certificate is proudly presented
+        to the one who makes ordinary days
+        feel special, makes me laugh when I
+        don't want to, and somehow became
+        my favourite person. ❤️
+
       </div>
 
       <div class="cert-footer">
@@ -662,17 +694,21 @@ button:active{
 
     </div>
 
-    <button onclick="startCatGame()">Claim Your Prize 🐱❤️</button>
+    <button onclick="startCatGame()">
+      Claim Your Prize 🐱❤️
+    </button>
 
   </div>
 </section>
 
 
-<!-- SCREEN 8 : CAT GAME -->
+<!-- CAT GAME -->
 <section class="screen" id="screen8">
+
   <div class="card cat-game">
 
-    <div class="paws" id="paws"></div>
+    <div class="paws"
+         id="paws"></div>
 
     <div class="cat-title">
       Cat Meme Mission 🐱
@@ -683,29 +719,38 @@ button:active{
     </div>
 
     <div class="cat-stage">
-      <div class="cat" id="cat" onclick="tapCat()">
+
+      <div class="cat"
+           id="cat"
+           onclick="tapCat()">
         😼
       </div>
+
     </div>
 
-    <div class="cat-message" id="catMessage">
+    <div class="cat-message"
+         id="catMessage">
       Tap the cat… if you dare 😼
     </div>
 
-    <div class="cat-counter" id="catCounter">
+    <div class="cat-counter"
+         id="catCounter">
       Cat 1 / 6
     </div>
 
-    <button id="catButton" onclick="tapCat()">
+    <button id="catButton"
+            onclick="tapCat()">
       Tap The Cat 🐾
     </button>
 
   </div>
+
 </section>
 
 
-<!-- SCREEN 9 : FINAL -->
+<!-- FINAL -->
 <section class="screen" id="screen9">
+
   <div class="card">
 
     <div class="promise">
@@ -732,7 +777,8 @@ button:active{
         Our story is still being written… 💌
       </div>
 
-      <div class="signature" id="finalSignature"></div>
+      <div class="signature"
+           id="finalSignature"></div>
 
       <div class="hearts">
         ❤️ 💕 ❤️
@@ -741,14 +787,15 @@ button:active{
     </div>
 
   </div>
+
 </section>
 
 
 <script>
 
-/* =========================
-   DATA
-========================= */
+/* ================================
+   BASIC DATA
+================================ */
 
 let cardData = {
   nickname:"",
@@ -760,16 +807,23 @@ let currentQuestion = 0;
 let score = 0;
 let catIndex = 0;
 
+
+/* ================================
+   QUIZ QUESTIONS
+================================ */
+
 const questions = [
 
   {
     q:"माझा mood खराब असेल तर मला काय हवं असतं? 🥺",
+
     options:[
       "🍫 Something sweet",
       "🫂 A hug",
       "😴 Sleep",
       "😂 तुझं annoying बोलणं"
     ],
+
     reactions:[
       "Chocolate = instant happiness 😂🍫",
       "Hug detected 🫂❤️",
@@ -780,12 +834,14 @@ const questions = [
 
   {
     q:"आपल्या दोघांमध्ये जास्त annoying कोण? 😂",
+
     options:[
       "😇 Me",
       "😈 You",
       "🤝 Both equally",
       "🥹 Nobody"
     ],
+
     reactions:[
       "Hmm… suspicious answer 😇😂",
       "At least you admitted it 😈😂",
@@ -796,12 +852,14 @@ const questions = [
 
   {
     q:"मला तुझ्यातलं सगळ्यात जास्त काय आवडतं? ❤️",
+
     options:[
       "🥹 Your care",
       "😂 Your stupid jokes",
       "🫂 The way you make me feel safe",
       "💕 Everything about you"
     ],
+
     reactions:[
       "Your care really matters 🥹❤️",
       "Those stupid jokes are unfortunately cute 😂",
@@ -812,12 +870,14 @@ const questions = [
 
   {
     q:"जर आपण एक दिवस पूर्णपणे free असू तर मी काय choose करेन? 👀",
+
     options:[
       "🎬 Movie + food",
       "🚗 Long drive",
       "🌆 बाहेर फिरायला",
       "🛌 पूर्ण दिवस together"
     ],
+
     reactions:[
       "Movie + food = perfect date 🍿❤️",
       "Long drive vibes 🚗💕",
@@ -828,12 +888,14 @@ const questions = [
 
   {
     q:"मी तुला किती love करते? 🥹❤️",
+
     options:[
       "❤️ A lot",
       "💕 More than you know",
       "♾️ Infinitely",
       "😌 याला limitच नाही!"
     ],
+
     reactions:[
       "A lot is still an understatement 🥹",
       "More than you know 💕",
@@ -845,14 +907,16 @@ const questions = [
 ];
 
 
-/* =========================
-   SCREEN CONTROL
-========================= */
+/* ================================
+   SCREEN
+================================ */
 
 function goTo(id){
 
   document.querySelectorAll(".screen")
-    .forEach(s => s.classList.remove("active"));
+    .forEach(function(screen){
+      screen.classList.remove("active");
+    });
 
   document.getElementById(id)
     .classList.add("active");
@@ -864,23 +928,28 @@ function goTo(id){
 }
 
 
-/* =========================
+/* ================================
    CREATOR
-========================= */
+================================ */
 
 function createCard(){
 
   const n =
-    document.getElementById("nickname").value.trim();
+    document.getElementById("nickname")
+      .value.trim();
 
   const f =
-    document.getElementById("yourname").value.trim();
+    document.getElementById("yourname")
+      .value.trim();
 
   const m =
-    document.getElementById("personalMessage").value.trim();
+    document.getElementById("personalMessage")
+      .value.trim();
 
   if(!n || !f || !m){
+
     alert("Please fill everything ❤️");
+
     return;
   }
 
@@ -888,34 +957,92 @@ function createCard(){
   cardData.yourname = f;
   cardData.message = m;
 
-  document.getElementById("previewName").innerText =
+  document.getElementById("previewName")
+    .innerText =
     "For " + n + " ❤️";
 
-  document.getElementById("previewMessage").innerText =
-    m;
+  document.getElementById("previewMessage")
+    .innerText = m;
 
   goTo("screen2");
 }
 
 
-/* =========================
+/* =================================================
+   COMPACT URL ENCODING
+   No external library required.
+================================================= */
+
+function encodeCard(data){
+
+  const json =
+    JSON.stringify(data);
+
+  const bytes =
+    new TextEncoder().encode(json);
+
+  let binary = "";
+
+  bytes.forEach(function(byte){
+    binary += String.fromCharCode(byte);
+  });
+
+  return btoa(binary)
+    .replace(/\+/g,"-")
+    .replace(/\//g,"_")
+    .replace(/=+$/,"");
+}
+
+
+function decodeCard(encoded){
+
+  let base64 =
+    encoded
+      .replace(/-/g,"+")
+      .replace(/_/g,"/");
+
+  while(base64.length % 4){
+    base64 += "=";
+  }
+
+  const binary =
+    atob(base64);
+
+  const bytes =
+    new Uint8Array(binary.length);
+
+  for(let i=0;i<binary.length;i++){
+
+    bytes[i] =
+      binary.charCodeAt(i);
+
+  }
+
+  const json =
+    new TextDecoder().decode(bytes);
+
+  return JSON.parse(json);
+}
+
+
+/* ================================
    GENERATE LINK
-========================= */
+================================ */
 
 function generateLink(){
 
   const data = {
+
     n:cardData.nickname,
+
     f:cardData.yourname,
+
     m:cardData.message
+
   };
 
   const encoded =
-    btoa(
-      encodeURIComponent(
-        JSON.stringify(data)
-      )
-    );
+    encodeCard(data);
 
   const link =
     window.location.origin +
@@ -930,46 +1057,71 @@ function generateLink(){
 }
 
 
+/* ================================
+   COPY LINK
+================================ */
+
 function copyLink(){
 
   const link =
-    document.getElementById("generatedLink").innerText;
+    document.getElementById("generatedLink")
+      .innerText;
 
-  navigator.clipboard.writeText(link)
-    .then(()=>{
-      alert("Link copied! ❤️ Now send it to him 😭");
-    })
-    .catch(()=>{
-      alert("Copy this link manually ❤️");
-    });
+  if(navigator.clipboard){
+
+    navigator.clipboard.writeText(link)
+      .then(function(){
+
+        alert(
+          "Link copied! ❤️ Now send it to him 😭"
+        );
+
+      })
+      .catch(function(){
+
+        prompt(
+          "Copy this link ❤️",
+          link
+        );
+
+      });
+
+  }else{
+
+    prompt(
+      "Copy this link ❤️",
+      link
+    );
+
+  }
 }
 
 
-/* =========================
+/* ================================
    LOAD SHARED CARD
-========================= */
+================================ */
 
 function loadSharedCard(){
 
   const params =
-    new URLSearchParams(window.location.search);
+    new URLSearchParams(
+      window.location.search
+    );
 
   const encoded =
     params.get("card");
 
   if(!encoded){
+
     goTo("screen1");
+
     return;
   }
 
   try{
 
     const decoded =
-      JSON.parse(
-        decodeURIComponent(
-          atob(encoded)
-        )
-      );
+      decodeCard(encoded);
 
     cardData.nickname =
       decoded.n || "";
@@ -981,11 +1133,14 @@ function loadSharedCard(){
       decoded.m || "";
 
     document.getElementById("letterText")
-      .innerText = cardData.message;
+      .innerText =
+      cardData.message;
 
     document.getElementById("letterSignature")
       .innerText =
-      "— " + cardData.yourname + " ♡";
+      "— " +
+      cardData.yourname +
+      " ♡";
 
     document.getElementById("certName")
       .innerText =
@@ -993,7 +1148,8 @@ function loadSharedCard(){
 
     document.getElementById("finalSignature")
       .innerText =
-      "— " + cardData.yourname +
+      "— " +
+      cardData.yourname +
       " ♡ " +
       cardData.nickname;
 
@@ -1003,20 +1159,23 @@ function loadSharedCard(){
 
     console.error(error);
 
-    alert("This surprise link seems invalid 😭");
+    alert(
+      "This surprise link is invalid 😭"
+    );
 
     goTo("screen1");
   }
 }
 
 
-/* =========================
+/* ================================
    QUIZ
-========================= */
+================================ */
 
 function startQuiz(){
 
   currentQuestion = 0;
+
   score = 0;
 
   goTo("screen4");
@@ -1038,7 +1197,8 @@ function showQuestion(){
 
   document.getElementById("progressBar")
     .style.width =
-    ((currentQuestion + 1) * 20) + "%";
+    ((currentQuestion + 1) * 20) +
+    "%";
 
   document.getElementById("questionText")
     .innerText =
@@ -1052,22 +1212,29 @@ function showQuestion(){
 
   options.innerHTML = "";
 
-  question.options.forEach((option,index)=>{
+  question.options.forEach(
+    function(option,index){
 
-    const btn =
-      document.createElement("button");
+      const btn =
+        document.createElement("button");
 
-    btn.className = "option";
+      btn.className =
+        "option";
 
-    btn.innerText = option;
+      btn.innerText =
+        option;
 
-    btn.onclick = ()=>{
-      answerQuestion(index);
-    };
+      btn.onclick =
+        function(){
 
-    options.appendChild(btn);
+          answerQuestion(index);
 
-  });
+        };
+
+      options.appendChild(btn);
+
+    }
+  );
 }
 
 
@@ -1083,12 +1250,15 @@ function answerQuestion(index){
     question.reactions[index];
 
   document.querySelectorAll(".option")
-    .forEach(btn=>{
+    .forEach(function(btn){
+
       btn.disabled = true;
+
       btn.style.opacity = ".65";
+
     });
 
-  setTimeout(()=>{
+  setTimeout(function(){
 
     currentQuestion++;
 
@@ -1114,9 +1284,9 @@ function quizComplete(){
 }
 
 
-/* =========================
+/* ================================
    LETTER
-========================= */
+================================ */
 
 function openLetter(){
 
@@ -1134,9 +1304,9 @@ function openLetter(){
 }
 
 
-/* =========================
+/* ================================
    CERTIFICATE
-========================= */
+================================ */
 
 function showCertificate(){
 
@@ -1150,50 +1320,60 @@ function showCertificate(){
 }
 
 
-/* =========================
-   CAT GAME
-========================= */
+/* ================================
+   CAT DATA
+================================ */
 
 const cats = [
 
   {
     face:"😼",
-    message:"Hehe… पकडलंस! पण अजून 5 बाकी आहेत 😼",
+    message:
+      "Hehe… पकडलंस! पण अजून 5 बाकी आहेत 😼",
     animation:"shake"
   },
 
   {
     face:"😂",
-    message:"HAHAHA! तू खरंच हे करत आहेस? 😂",
+    message:
+      "HAHAHA! तू खरंच हे करत आहेस? 😂",
     animation:"jump"
   },
 
   {
     face:"🥺",
-    message:"इतक्या पटकन मला का मारलं 😭",
+    message:
+      "इतक्या पटकन मला का मारलं 😭",
     animation:"cry"
   },
 
   {
     face:"😾",
-    message:"EXCUSE ME?! माझ्यावर हात उचललास?! 😾",
+    message:
+      "EXCUSE ME?! माझ्यावर हात उचललास?! 😾",
     animation:"angry"
   },
 
   {
     face:"😽",
-    message:"Okay fine… one kiss for you 💋",
+    message:
+      "Okay fine… one kiss for you 💋",
     animation:"kiss"
   },
 
   {
     face:"🥰",
-    message:"Okayyy… you win my heart ❤️",
+    message:
+      "Okayyy… you win my heart ❤️",
     animation:"love"
   }
 
 ];
 
+
+/* ================================
+   CAT GAME START
+================================ */
 
 function startCatGame(){
 
@@ -1211,13 +1391,26 @@ function startCatGame(){
     .innerText =
     "Cat 1 / 6";
 
-  document.getElementById("catButton")
-    .innerText =
+  const button =
+    document.getElementById("catButton");
+
+  button.innerText =
     "Tap The Cat 🐾";
+
+  button.onclick =
+    function(){
+
+      tapCat();
+
+    };
 
   goTo("screen8");
 }
 
+
+/* ================================
+   TAP CAT
+================================ */
 
 function tapCat(){
 
@@ -1250,21 +1443,25 @@ function tapCat(){
 
   if(catIndex === cats.length - 1){
 
-    setTimeout(()=>{
+    setTimeout(function(){
 
       document.getElementById("catCounter")
         .innerText =
         "🐾 CAT MISSION COMPLETE! 🐾";
 
-      document.getElementById("catButton")
-        .innerText =
+      const button =
+        document.getElementById("catButton");
+
+      button.innerText =
         "One Last Thing ❤️";
 
-      document.getElementById("catButton")
-        .onclick =
+      button.onclick =
         function(){
+
           goTo("screen9");
+
           makeConfetti();
+
         };
 
     },600);
@@ -1274,7 +1471,7 @@ function tapCat(){
 
   catIndex++;
 
-  setTimeout(()=>{
+  setTimeout(function(){
 
     cat.innerText =
       cats[catIndex].face;
@@ -1289,9 +1486,9 @@ function tapCat(){
 }
 
 
-/* =========================
-   PAW ANIMATION
-========================= */
+/* ================================
+   PAWS
+================================ */
 
 function createPaws(){
 
@@ -1303,33 +1500,44 @@ function createPaws(){
     const paw =
       document.createElement("div");
 
-    paw.className = "paw";
+    paw.className =
+      "paw";
 
-    paw.innerText = "🐾";
+    paw.innerText =
+      "🐾";
 
     paw.style.left =
       Math.random()*90 + "%";
 
     paw.style.animationDelay =
-      (Math.random()*.5) + "s";
+      Math.random()*.5 + "s";
 
     container.appendChild(paw);
 
-    setTimeout(()=>{
+    setTimeout(function(){
+
       paw.remove();
+
     },3000);
   }
 }
 
 
-/* =========================
+/* ================================
    CONFETTI
-========================= */
+================================ */
 
 function makeConfetti(){
 
-  const emojis =
-    ["❤️","💕","✨","🎉","💗","🥹","🌸"];
+  const emojis = [
+    "❤️",
+    "💕",
+    "✨",
+    "🎉",
+    "💗",
+    "🥹",
+    "🌸"
+  ];
 
   for(let i=0;i<25;i++){
 
@@ -1347,26 +1555,31 @@ function makeConfetti(){
       ];
 
     item.style.left =
-      Math.random()*100 + "vw";
+      Math.random()*100 +
+      "vw";
 
     item.style.animationDuration =
-      (2 + Math.random()*2) + "s";
+      (2 + Math.random()*2) +
+      "s";
 
     item.style.animationDelay =
-      Math.random()*.5 + "s";
+      Math.random()*.5 +
+      "s";
 
     document.body.appendChild(item);
 
-    setTimeout(()=>{
+    setTimeout(function(){
+
       item.remove();
+
     },4500);
   }
 }
 
 
-/* =========================
+/* ================================
    START
-========================= */
+================================ */
 
 loadSharedCard();
 
