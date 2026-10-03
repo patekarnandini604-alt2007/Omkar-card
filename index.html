@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Omkar ❤️</title>
 
+<title>For Babdya ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oooh+Baby&display=swap" rel="stylesheet">
 
 <style>
@@ -15,298 +18,479 @@
 }
 
 body{
-  font-family:'DM Sans',sans-serif;
-  background:#090909;
-  color:#fff;
   min-height:100vh;
+  font-family:"DM Sans",sans-serif;
+  background:linear-gradient(135deg,#fff5f7,#ffe8ef,#fff9f5);
+  color:#4b2732;
   overflow-x:hidden;
 }
 
-.screen{
-  display:none;
+.page{
   min-height:100vh;
-  padding:30px 20px;
+  display:none;
   align-items:center;
   justify-content:center;
-  text-align:center;
+  padding:25px 18px;
+  animation:fadeIn .7s ease;
 }
 
-.screen.active{
+.page.active{
   display:flex;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 .card{
   width:100%;
-  max-width:500px;
+  max-width:650px;
+  background:rgba(255,255,255,.88);
+  border-radius:30px;
   padding:35px 25px;
+  text-align:center;
+  box-shadow:0 15px 45px rgba(125,55,75,.14);
+  border:1px solid rgba(255,255,255,.8);
 }
 
-h1,h2,.script{
-  font-family:'Oooh Baby',cursive;
+h1,h2{
+  font-family:"Oooh Baby",cursive;
+  font-weight:400;
 }
 
 h1{
-  font-size:58px;
-  line-height:1;
-  margin-bottom:20px;
+  font-size:54px;
+  line-height:1.1;
+  color:#a63d5a;
 }
 
 h2{
-  font-size:43px;
-  margin-bottom:20px;
+  font-size:42px;
+  color:#a63d5a;
+  margin-bottom:15px;
 }
 
 p{
-  font-size:16px;
-  line-height:1.7;
-  color:#eee;
+  line-height:1.8;
+  font-size:15px;
 }
 
-.small{
-  font-size:14px;
-  color:#aaa;
+.subtitle{
+  margin:20px auto;
+  max-width:500px;
 }
 
 button{
   border:0;
-  border-radius:30px;
-  padding:15px 28px;
-  margin-top:25px;
-  font-size:15px;
-  font-weight:700;
   cursor:pointer;
-  background:#fff;
-  color:#111;
+  font-family:"DM Sans",sans-serif;
+  font-weight:700;
+  border-radius:50px;
+  padding:14px 25px;
+  background:linear-gradient(135deg,#b83f61,#e46c88);
+  color:white;
+  box-shadow:0 8px 20px rgba(184,63,97,.25);
   transition:.25s;
 }
 
 button:hover{
-  transform:scale(1.04);
+  transform:translateY(-3px);
 }
 
 button:active{
   transform:scale(.97);
 }
 
-/* INTRO */
-.intro-heart{
-  font-size:65px;
-  animation:pulse 1.5s infinite;
+.small-note{
+  margin-top:18px;
+  font-size:12px;
+  opacity:.65;
 }
 
-@keyframes pulse{
-  50%{transform:scale(1.12);}
+/* floating hearts */
+.heart-bg{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:-1;
 }
 
-/* CAR */
+.heart-bg span{
+  position:absolute;
+  bottom:-30px;
+  animation:float 8s linear infinite;
+  opacity:.3;
+  font-size:20px;
+}
+
+.heart-bg span:nth-child(1){left:8%;animation-delay:0s}
+.heart-bg span:nth-child(2){left:25%;animation-delay:2s}
+.heart-bg span:nth-child(3){left:45%;animation-delay:4s}
+.heart-bg span:nth-child(4){left:65%;animation-delay:1s}
+.heart-bg span:nth-child(5){left:85%;animation-delay:3s}
+
+@keyframes float{
+  0%{transform:translateY(0) rotate(0)}
+  100%{transform:translateY(-110vh) rotate(360deg)}
+}
+
+/* car intro */
 .road{
   position:relative;
-  height:130px;
-  margin:35px -20px 10px;
+  width:100%;
+  height:115px;
+  margin:25px 0 10px;
   overflow:hidden;
-  background:linear-gradient(#171717 0 55%,#292929 55%);
 }
 
-.road:after{
-  content:"";
+.road-line{
   position:absolute;
   left:0;
   right:0;
-  top:82px;
-  height:5px;
-  background:repeating-linear-gradient(
-    90deg,
-    #fff 0 35px,
-    transparent 35px 65px
-  );
+  bottom:22px;
+  border-bottom:4px dashed #9d7d85;
 }
 
 .car{
   position:absolute;
-  font-size:65px;
-  bottom:35px;
-  left:10%;
+  bottom:30px;
+  left:-100px;
+  font-size:60px;
   animation:drive 4s linear infinite;
-  z-index:2;
 }
 
 @keyframes drive{
-  from{left:-20%}
-  to{left:105%}
+  from{left:-100px}
+  to{left:110%}
 }
 
-/* QUIZ */
-.progress{
-  font-size:13px;
-  color:#aaa;
-  margin-bottom:15px;
+/* envelope */
+.envelope{
+  width:180px;
+  height:125px;
+  margin:25px auto;
+  position:relative;
+  cursor:pointer;
+  perspective:600px;
 }
 
-.question{
-  font-family:'Oooh Baby',cursive;
-  font-size:34px;
-  line-height:1.2;
-  margin:20px 0 25px;
-}
-
-.options{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-.option{
+.env-body{
   width:100%;
-  background:#181818;
-  border:1px solid #333;
-  color:#fff;
-  margin:0;
-  text-align:left;
+  height:100%;
+  background:#f5a5b7;
+  border-radius:10px;
+  box-shadow:0 12px 25px rgba(150,50,80,.18);
+  position:relative;
+  overflow:hidden;
 }
 
-.option:hover{
-  background:#252525;
+.env-body:before,
+.env-body:after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  width:0;
+  height:0;
+  border-style:solid;
 }
 
-/* LETTER */
-.letter{
-  background:#151515;
-  border:1px solid #333;
-  border-radius:22px;
-  padding:28px 22px;
-  text-align:left;
-  margin-top:20px;
+.env-body:before{
+  left:0;
+  border-width:62px 90px 0 0;
+  border-color:#ed8fa7 transparent transparent transparent;
 }
 
-.letter p{
-  white-space:pre-line;
+.env-body:after{
+  right:0;
+  border-width:0 90px 62px 0;
+  border-color:transparent #ed8fa7 transparent transparent;
 }
 
-/* CERTIFICATE */
-.certificate{
-  background:#151515;
-  border:5px double #d5b45a;
-  padding:35px 20px;
-  border-radius:8px;
-  box-shadow:0 0 30px rgba(255,215,100,.12);
+.flap{
+  position:absolute;
+  top:0;
+  left:0;
+  width:0;
+  height:0;
+  border-left:90px solid transparent;
+  border-right:90px solid transparent;
+  border-top:65px solid #f8b4c4;
+  transform-origin:top;
+  transition:.7s;
+  z-index:3;
 }
 
-.certificate .crown{
-  font-size:50px;
+.envelope.open .flap{
+  transform:rotateX(180deg);
 }
 
-.certificate h2{
-  color:#e6c96a;
-  font-size:48px;
-}
-
-.certificate-name{
-  font-family:'Oooh Baby',cursive;
-  font-size:48px;
-  margin:15px 0;
-  color:#fff;
-}
-
-.gold{
-  color:#e6c96a;
-}
-
-/* LOVE DRIVE */
-.stop{
-  background:#151515;
-  border:1px solid #333;
-  border-radius:20px;
-  padding:25px 18px;
-  margin:18px 0;
-}
-
-.stop-icon{
-  font-size:45px;
-  margin-bottom:10px;
-}
-
-.choice{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-top:18px;
-}
-
-.choice button{
-  margin:0;
-  padding:15px 10px;
-  background:#1e1e1e;
-  color:#fff;
-  border:1px solid #444;
-}
-
-/* FINAL */
-.final-heart{
-  font-size:70px;
-  animation:pulse 1.5s infinite;
-}
-
-.signature{
-  margin-top:30px;
-  font-family:'Oooh Baby',cursive;
+.letter-icon{
+  position:absolute;
+  z-index:2;
+  left:50%;
+  top:40px;
+  transform:translateX(-50%);
   font-size:35px;
 }
 
-.fade{
-  animation:fade .6s ease;
+/* hearts */
+.reasons{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  margin:25px 0;
 }
 
-@keyframes fade{
-  from{opacity:0;transform:translateY(15px)}
-  to{opacity:1;transform:translateY(0)}
+.reason-heart{
+  width:70px;
+  height:70px;
+  margin:auto;
+  border-radius:50%;
+  border:0;
+  background:#fff0f4;
+  box-shadow:0 8px 18px rgba(150,60,90,.12);
+  font-size:30px;
+  color:#c54d6b;
+  transition:.25s;
 }
 
-.hidden{
-  display:none;
+.reason-heart:hover{
+  transform:scale(1.1) rotate(-5deg);
+}
+
+.reason-heart.opened{
+  background:#c54d6b;
+  color:white;
+}
+
+.reason-box{
+  min-height:100px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:#fff6f8;
+  border-radius:20px;
+  margin-bottom:20px;
+  font-size:16px;
+  line-height:1.7;
+}
+
+.counter{
+  font-size:13px;
+  opacity:.65;
+}
+
+/* letter */
+.letter{
+  text-align:left;
+  background:#fffaf8;
+  padding:25px;
+  border-radius:22px;
+  line-height:2;
+  margin:20px 0;
+  white-space:pre-line;
+}
+
+/* certificate */
+.certificate{
+  position:relative;
+  padding:35px 25px;
+  margin:20px 0;
+  border:5px double #c99b45;
+  border-radius:18px;
+  background:linear-gradient(145deg,#fffdf4,#fff8df);
+  box-shadow:inset 0 0 0 2px #efd99e;
+}
+
+.crown{
+  font-size:45px;
+  margin-bottom:5px;
+}
+
+.certificate h2{
+  color:#9b6b18;
+}
+
+.cert-name{
+  font-family:"Oooh Baby",cursive;
+  font-size:42px;
+  color:#b07b1f;
+  margin:10px 0;
+}
+
+.cert-text{
+  line-height:1.8;
+}
+
+/* Aplya baddal */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin:25px 0;
+}
+
+.about-card{
+  background:#fff6f8;
+  border-radius:20px;
+  padding:22px 14px;
+  cursor:pointer;
+  transition:.25s;
+  min-height:135px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.about-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 20px rgba(150,60,90,.12);
+}
+
+.about-card .emoji{
+  font-size:32px;
+  margin-bottom:8px;
+}
+
+.about-card h3{
+  font-size:16px;
+  margin-bottom:6px;
+}
+
+.about-card p{
+  font-size:13px;
+}
+
+/* final */
+.final-heart{
+  font-size:75px;
+  animation:pulse 1.5s infinite;
+  margin:15px 0;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.12)}
+}
+
+.signature{
+  font-family:"Oooh Baby",cursive;
+  font-size:30px;
+  color:#a63d5a;
+  margin-top:20px;
+}
+
+.back-small{
+  margin-top:15px;
+  background:transparent;
+  color:#a63d5a;
+  box-shadow:none;
+  font-size:12px;
+}
+
+/* mobile */
+@media(max-width:520px){
+
+  .card{
+    padding:30px 18px;
+    border-radius:25px;
+  }
+
+  h1{
+    font-size:45px;
+  }
+
+  h2{
+    font-size:36px;
+  }
+
+  .reasons{
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+  }
+
+  .reason-heart{
+    width:52px;
+    height:52px;
+    font-size:22px;
+  }
+
+  .about-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .road{
+    height:100px;
+  }
+
+  .car{
+    font-size:50px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 1 INTRO -->
-<section id="intro" class="screen active">
-  <div class="card fade">
+<div class="heart-bg">
+  <span>❤️</span>
+  <span>💕</span>
+  <span>💗</span>
+  <span>❤️</span>
+  <span>💞</span>
+</div>
 
-    <div class="intro-heart">❤️</div>
+
+<!-- 1 INTRO -->
+<section class="page active" id="intro">
+  <div class="card">
+
+    <div style="font-size:55px;margin-bottom:10px;">👀❤️</div>
 
     <h1>Hey You...</h1>
 
-    <p>
-      Aaj tujhya sathi ek chhota surprise aahe. 🥹<br>
-      Khup motha kahi nahi...<br>
-      pan shevattparyant nakki bagh. ❤️
+    <p class="subtitle">
+      Babdya, tujhya sathi ek chhota sa surprise aahe...
+      <br>
+      Pan please शेवटपर्यंत open kar. 🥹❤️
     </p>
 
-    <button onclick="show('driveIntro')">
-      LET'S GO ❤️
+    <button onclick="showPage('driveIntro')">
+      OPEN MY SURPRISE 💌
     </button>
+
+    <p class="small-note">
+      Made with lots of love ♡
+    </p>
 
   </div>
 </section>
 
 
 <!-- 2 CAR INTRO -->
-<section id="driveIntro" class="screen">
-  <div class="card fade">
+<section class="page" id="driveIntro">
+  <div class="card">
 
-    <h2>Destination: Us ❤️</h2>
+    <div style="font-size:45px;">🚗❤️</div>
 
-    <p>
-      Aaj kuthlyahi map chi garaj nahi...<br>
+    <h2>Destination: Us</h2>
+
+    <p class="subtitle">
+      Aaj kuthlyahi map chi garaj nahi...
+      <br>
       karan mala fakt tujhya sobat ha journey continue karaycha aahe. 🫂
     </p>
 
     <div class="road">
-      <div class="car">🚗💨</div>
+      <div class="car">🚗</div>
+      <div class="road-line"></div>
     </div>
 
-    <button onclick="startQuiz()">
+    <button onclick="showPage('envelopePage')">
       START ENGINE 🔑
     </button>
 
@@ -314,35 +498,77 @@ button:active{
 </section>
 
 
-<!-- 3 QUIZ -->
-<section id="quiz" class="screen">
-  <div class="card fade">
+<!-- 3 ENVELOPE -->
+<section class="page" id="envelopePage">
+  <div class="card">
 
-    <div class="progress" id="progress"></div>
+    <div style="font-size:38px;">👀💌</div>
 
-    <div class="question" id="question"></div>
+    <h2>Babdya... Don't Open This Yet</h2>
 
-    <div class="options" id="options"></div>
+    <p class="subtitle">
+      Actually... mala mahit aahe tu curiosity mule nakki open karnar. 😂❤️
+      <br><br>
+      So okay...
+      <br>
+      <b>Open it. 🥹</b>
+    </p>
+
+    <div class="envelope" id="envelope" onclick="openEnvelope()">
+      <div class="flap"></div>
+      <div class="env-body">
+        <div class="letter-icon">❤️</div>
+      </div>
+    </div>
+
+    <button id="envelopeButton" onclick="openEnvelope()">
+      OPEN IT 💌
+    </button>
 
   </div>
 </section>
 
 
-<!-- 4 QUIZ COMPLETE -->
-<section id="quizDone" class="screen">
-  <div class="card fade">
+<!-- 4 REASONS -->
+<section class="page" id="reasonsPage">
+  <div class="card">
 
-    <div style="font-size:65px;">🏁</div>
+    <div style="font-size:35px;">❤️</div>
 
-    <h1>You Made It!</h1>
+    <h2>Reasons I Choose You</h2>
 
-    <p>
-      5/5 ❤️<br><br>
-      Boyfriend level officially unlocked! 😌
+    <p class="subtitle">
+      Ek-ek heart open kar...
+      <br>
+      pratyekat ek little reason aahe. 🥹
     </p>
 
-    <button onclick="show('letter')">
-      NEXT SURPRISE 💌
+    <div class="reason-box" id="reasonBox">
+      Heart choose kar, Babdya... 👀❤️
+    </div>
+
+    <div class="reasons">
+
+      <button class="reason-heart" onclick="showReason(0,this)">❤️</button>
+      <button class="reason-heart" onclick="showReason(1,this)">❤️</button>
+      <button class="reason-heart" onclick="showReason(2,this)">❤️</button>
+      <button class="reason-heart" onclick="showReason(3,this)">❤️</button>
+      <button class="reason-heart" onclick="showReason(4,this)">❤️</button>
+
+      <button class="reason-heart" onclick="showReason(5,this)">❤️</button>
+      <button class="reason-heart" onclick="showReason(6,this)">❤️</button>
+      <button class="reason-heart" onclick="showReason(7,this)">❤️</button>
+      <button class="reason-heart" onclick="showReason(8,this)">❤️</button>
+      <button class="reason-heart" onclick="showReason(9,this)">❤️</button>
+
+    </div>
+
+    <p class="counter" id="reasonCounter">
+      0 / 10 hearts opened
+    </p>
+
+    <button id="reasonNext" style="display:none;margin-top:20px;" onclick="showPage('letterPage')">
+      Okay... One Last Thing 👀💌
     </button>
 
   </div>
@@ -350,13 +576,15 @@ button:active{
 
 
 <!-- 5 LETTER -->
-<section id="letter" class="screen">
-  <div class="card fade">
+<section class="page" id="letterPage">
+  <div class="card">
 
-    <h2>A Little Something From Me... ❤️</h2>
+    <div style="font-size:38px;">💌</div>
+
+    <h2>For You, Babdya ❤️</h2>
 
     <div class="letter">
-      <p>
+
 Omkar,
 
 Honestly, kadhi kadhi mala vatata ki aapan evdhya chhan memories kasa create kelya. 🥹❤️
@@ -369,7 +597,7 @@ khup saare laughs ani khup saari memories aahet.
 
 Pan ya saglya madhye ek goshta constant aahe...
 
-I still choose you. ❤️
+<b>I still choose you. ❤️</b>
 
 Thank you for being there,
 majha mood tolerate karnyasathi 😂,
@@ -379,11 +607,11 @@ ani simply majhya life madhye asnyasathi.
 Happy Boyfriend Day, Omkar. ❤️
 
 I love you. ♾️
-      </p>
+
     </div>
 
-    <button onclick="show('certificate')">
-      ONE MORE THING 🥹
+    <button onclick="showPage('certificatePage')">
+      NEXT ❤️
     </button>
 
   </div>
@@ -391,22 +619,22 @@ I love you. ♾️
 
 
 <!-- 6 CERTIFICATE -->
-<section id="certificate" class="screen">
-  <div class="card fade">
+<section class="page" id="certificatePage">
+  <div class="card">
 
     <div class="certificate">
 
       <div class="crown">👑</div>
 
-      <p class="gold">THIS CERTIFICATE IS PROUDLY PRESENTED TO</p>
+      <h2>Best Boyfriend</h2>
 
-      <div class="certificate-name">
+      <p>This certificate is proudly presented to</p>
+
+      <div class="cert-name">
         Omkar ❤️
       </div>
 
-      <h2>Best Boyfriend</h2>
-
-      <p>
+      <p class="cert-text">
         Ha certificate tya vyaktila denyat yet aahe,
         jo majha boring day pan special banvto,
         mala hasvto, majhyavar chidto
@@ -415,101 +643,64 @@ I love you. ♾️
 
       <br>
 
-      <p class="gold">
-        Certified with unlimited love ♾️
+      <p>
+        <b>Certified with unlimited love ♾️</b>
       </p>
 
     </div>
 
-    <button onclick="show('loveDrive')">
-      ONE LAST DRIVE 🚗
+    <button onclick="showPage('aboutPage')">
+      ONE MORE THING 💕
     </button>
 
   </div>
 </section>
 
 
-<!-- 7 LOVE DRIVE -->
-<section id="loveDrive" class="screen">
-  <div class="card fade">
+<!-- 7 APLYA BADDAL -->
+<section class="page" id="aboutPage">
+  <div class="card">
 
-    <h2>One Last Drive? 🚗❤️</h2>
+    <div style="font-size:38px;">🫶</div>
 
-    <p>
-      Chala, ajun ek chhota ride gheuya...<br>
-      Destination mahit nahi,<br>
-      pan passenger seat var tu aslas ki enough aahe. 🥹
+    <h2>Aplya Baddal ❤️</h2>
+
+    <p class="subtitle">
+      Aplya story madhlya kahi little things...
+      <br>
+      Ek-ek card open kar. 🥹
     </p>
 
-    <div class="road">
-      <div class="car">🚗💨</div>
-    </div>
+    <div class="about-grid">
 
-    <div class="stop">
-
-      <div class="stop-icon">🛣️</div>
-
-      <h2>Memory Lane</h2>
-
-      <p>
-        Aplya relationship madhli ek memory
-        ji mi kadhi visarnar nahi... ❤️
-      </p>
-
-    </div>
-
-
-    <div class="stop">
-
-      <div class="stop-icon">⛽</div>
-
-      <h2>Love Fuel</h2>
-
-      <p>
-        Aplya next drive sathi kay gheu?
-      </p>
-
-      <div class="choice">
-
-        <button onclick="fuel('🍫 Snacks')">
-          🍫 Snacks
-        </button>
-
-        <button onclick="fuel('🎶 Music')">
-          🎶 Music
-        </button>
-
-        <button onclick="fuel('📸 Photos')">
-          📸 Photos
-        </button>
-
-        <button onclick="fuel('❤️ Just Us')">
-          ❤️ Just Us
-        </button>
-
+      <div class="about-card" onclick="aboutMessage('feel')">
+        <div class="emoji">🫂</div>
+        <h3>What I Feel</h3>
+        <p id="feelText">Tap me ❤️</p>
       </div>
 
-      <p id="fuelResult" class="small" style="margin-top:18px;"></p>
+      <div class="about-card" onclick="aboutMessage('love')">
+        <div class="emoji">😂</div>
+        <h3>What I Love</h3>
+        <p id="loveText">Tap me ❤️</p>
+      </div>
+
+      <div class="about-card" onclick="aboutMessage('remember')">
+        <div class="emoji">🥹</div>
+        <h3>What I Remember</h3>
+        <p id="rememberText">Tap me ❤️</p>
+      </div>
+
+      <div class="about-card" onclick="aboutMessage('want')">
+        <div class="emoji">♾️</div>
+        <h3>What I Want</h3>
+        <p id="wantText">Tap me ❤️</p>
+      </div>
 
     </div>
 
-
-    <div class="stop">
-
-      <div class="stop-icon">🚦</div>
-
-      <h2>Red Light</h2>
-
-      <p>
-        Thamb zara... 👀<br><br>
-        Ek important goshta sangaychi aahe...
-        tu majhya sathi khup special ahes. ❤️
-      </p>
-
-    </div>
-
-    <button onclick="show('final')">
-      REACH FINAL DESTINATION 🏁
+    <button id="aboutNext" style="display:none;" onclick="showPage('finalPage')">
+      ONE LITTLE PROMISE ♾️
     </button>
 
   </div>
@@ -517,42 +708,46 @@ I love you. ♾️
 
 
 <!-- 8 FINAL -->
-<section id="final" class="screen">
-  <div class="card fade">
+<section class="page" id="finalPage">
+  <div class="card">
 
     <div class="final-heart">❤️</div>
 
-    <h1>One Little Promise</h1>
+    <h2>One Little Promise</h2>
 
-    <p>
-      Mala aple sagle days perfect pahijet
-      asa nahi...
+    <p class="subtitle">
+
+      Mala aple sagle days perfect pahijet asa nahi...
+
       <br><br>
 
       Pan day kiti hi tough asla,
       tarihi shevti apan ekmekanchya bajula asav. 🫂
+
       <br><br>
 
       Thoda bhandu, thoda rusu,
       khup hasu ani bharpur memories banvu. 😂❤️
+
       <br><br>
 
       Ani years kiti hi jhale tari,
       mi tula punha punha choose karen. ♾️❤️
-    </p>
 
-    <br>
+      <br><br>
 
-    <p>
-      Our story is still being written... 💌
+      <b>Our story is still being written... 💌</b>
+
     </p>
 
     <div class="signature">
       — Nandini ♡ Omkar
     </div>
 
-    <p style="margin-top:25px;">
-      Happy Boyfriend Day, Omkar. ❤️
+    <br>
+
+    <p>
+      <b>Happy Boyfriend Day, Babdya. ❤️</b>
     </p>
 
   </div>
@@ -561,136 +756,133 @@ I love you. ♾️
 
 <script>
 
-const questions = [
+function showPage(id){
 
-{
- q:"Majha mood off asel tar mala secretly kay hav asta? 🥺",
- options:[
- "🍫 Something sweet",
- "🫂 A hug",
- "😴 Thodi sleep",
- "😂 Tujha annoying bolna"
- ]
-},
-
-{
- q:"Aplya doghanmadhe jast annoying kon? 😂",
- options:[
- "😇 Me",
- "😈 You",
- "🤝 Both equally",
- "🥹 Nobody"
- ]
-},
-
-{
- q:"Mala tujhya madhla saglyat jast kay avadta? ❤️",
- options:[
- "🥹 Your care",
- "😂 Your stupid jokes",
- "🫂 The way you make me feel safe",
- "💕 Everything about you"
- ]
-},
-
-{
- q:"Jar apan ek full day free asu tar mi kay choose karen? 👀",
- options:[
- "🎬 Movie + food",
- "🚗 Long drive",
- "🌆 Baher firayla",
- "🛌 Full day together"
- ]
-},
-
-{
- q:"Mi tula kiti love karte? 🥹❤️",
- options:[
- "❤️ A lot",
- "💕 More than you know",
- "♾️ Infinitely",
- "😌 Yala limitach nahi!"
- ]
-}
-
-];
-
-let current=0;
-
-function show(id){
-
-  document.querySelectorAll('.screen').forEach(s=>{
-    s.classList.remove('active');
+  document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("active");
   });
 
-  const target=document.getElementById(id);
-
-  target.classList.add('active');
+  document.getElementById(id).classList.add("active");
 
   window.scrollTo({
     top:0,
-    behavior:'smooth'
+    behavior:"smooth"
   });
 }
 
 
-function startQuiz(){
+/* Envelope */
 
-  current=0;
-  show('quiz');
-  loadQuestion();
+let envelopeOpened=false;
 
+function openEnvelope(){
+
+  if(envelopeOpened){
+    showPage("reasonsPage");
+    return;
+  }
+
+  envelopeOpened=true;
+
+  document.getElementById("envelope").classList.add("open");
+
+  document.getElementById("envelopeButton").innerText="OPENING... ❤️";
+
+  setTimeout(()=>{
+    showPage("reasonsPage");
+  },900);
 }
 
 
-function loadQuestion(){
+/* Reasons */
 
-  const q=questions[current];
+const reasons=[
 
-  document.getElementById('progress').innerText =
-    "STOP " + (current+1) + " / 5 🚦";
+  "Because tu mala safe feel karvto. 🫂❤️",
 
-  document.getElementById('question').innerText=q.q;
+  "Because tu majhya stupid jokes suddha aikto. 😂",
 
-  const box=document.getElementById('options');
+  "Because majha mood tu olakhatos, even when mi kahi bolat nahi. 🥹",
 
-  box.innerHTML="";
+  "Because tu majha boyfriend peksha majha best friend jast ahes. ❤️",
 
-  q.options.forEach(option=>{
+  "Because tu majhya smallest goshtinna suddha importance detos. 🫶",
 
-    const btn=document.createElement('button');
+  "Because tu naslas ki kahi tari missing vatata. 🥺",
 
-    btn.className="option";
+  "Because tu majhya ordinary days la special banvto. 🌷",
 
-    btn.innerText=option;
+  "Because tujhyasobat mi completely myself asu shakte. ❤️",
 
-    btn.onclick=()=>{
+  "Because after everything, I still choose you. ♾️",
 
-      current++;
+  "Because honestly... I don't need a reason to love you. ❤️"
 
-      if(current < questions.length){
+];
 
-        loadQuestion();
+let openedReasons=0;
 
-      }else{
+function showReason(index,button){
 
-        show('quizDone');
+  document.getElementById("reasonBox").innerText=reasons[index];
 
-      }
+  if(!button.classList.contains("opened")){
 
-    };
+    button.classList.add("opened");
 
-    box.appendChild(btn);
+    openedReasons++;
 
-  });
+    document.getElementById("reasonCounter").innerText=
+      openedReasons+" / 10 hearts opened";
 
+  }
+
+  if(openedReasons===10){
+
+    document.getElementById("reasonNext").style.display="inline-block";
+  }
 }
 
 
-function fuel(choice){
+/* Aplya Baddal */
 
-  document.getElementById('fuelResult').innerText =
-    choice + " selected ❤️";
+let aboutOpened={
+  feel:false,
+  love:false,
+  remember:false,
+  want:false
+};
+
+function aboutMessage(type){
+
+  const messages={
+
+    feel:"Tujhyasobat mala gharasarkha comfort feel hoto. 🫂❤️",
+
+    love:"Tujha stupid side suddha mala secretly khup avadto. 😂❤️",
+
+    remember:"Aplya chhota chhota moments suddha mala khup special vatatat. 🥹",
+
+    want:"Aajpasun pudhe pan khup saari memories banvaychya aahet... with you. ♾️❤️"
+
+  };
+
+  const element=document.getElementById(type+"Text");
+
+  element.innerText=messages[type];
+
+  aboutOpened[type]=true;
+
+  if(
+    aboutOpened.feel &&
+    aboutOpened.love &&
+    aboutOpened.remember &&
+    aboutOpened.want
+  ){
+
+    document.getElementById("aboutNext").style.display="inline-block";
+
+  }
 
 }
 
